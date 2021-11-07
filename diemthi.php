@@ -7,7 +7,7 @@ $kq1 = mysqli_query($conn, $sql1);
     <table class="table table-bordered">  
     <thead>
       <tr>
-        <th >Mã Môn Học</th>
+        <th >Mã Môn Học djsadsạkldj</th>
         <th>Tên Môn Học</th>
         <th>Số tín chỉ</th>
         <th>Điểm 10</th>
