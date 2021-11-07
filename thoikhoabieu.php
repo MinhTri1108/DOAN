@@ -15,7 +15,12 @@ INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc = dangkymonhoc.MaMonHoc";
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb30">
                 <h2>Thời khóa biểu</h2>
-                
+                <select name = "check">
+                <option value="Audi">Audi
+                <option value="BMW">BMW
+                <option value="Mercedes">Mercedes
+                <option value="Volvo">Volvo
+                </select>
                 <div class="table-responsive">
                 </div>
                 <h4>Học kì</h4>
