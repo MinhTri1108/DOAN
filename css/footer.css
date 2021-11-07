@@ -1,0 +1,64 @@
+/* #footer {
+    border: 5px solid #4cbc9c;  
+    width:100%;
+    height:auto;
+    border-radius: 10px;
+    margin-top: 30px;
+    
+  }
+  #footer .fLeft{
+    width: 50%;
+    height: 150px;
+    background: rgba(175, 177, 255, 0.8);
+    float: left;
+    border: #4cbc9c;
+    border-radius: 0px;
+    
+  }
+  #footer .fRight{
+    width: 50%;
+    height: 150px;
+    background: rgba(175, 177, 255, 0.8);
+    float: right;
+    border: #4cbc9c;
+    border-radius: 0px;
+  }
+  .clear { clear: both }
+  p {
+    font-style: bold;
+    font-weight: 600;
+  } */
+  #footer {
+    border: 5px solid #4cbc9c;  
+    width:100%;
+    height:auto;
+    border-radius: 10px;
+    position:absolute;
+    bottom:0px;
+    margin: 0;
+    background-color: #000;
+    height: 100px;
+    
+  }
+  #footer .fLeft{
+    width: 50%;
+    height: 150px;
+    background: rgba(175, 177, 255, 0.8);
+    float: left;
+    border: #4cbc9c;
+    border-radius: 0px;
+    
+  }
+  #footer .fRight{
+    width: 50%;
+    height: 150px;
+    background: rgba(175, 177, 255, 0.8);
+    float: right;
+    border: #4cbc9c;
+    border-radius: 0px;
+  }
+  .clear { clear: both }
+  p {
+    font-style: bold;
+    font-weight: 600;
+  }

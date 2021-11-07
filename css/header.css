@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+	background-image: url('../images/dai-hoc-quy-nhon.jpg') no-repeat center;
+	background-size: contain;
+}
+.container{
+    max-width: none;
+    margin: 0px auto;
+}
+img{
+    width: 100%;
+}
+li {
+    list-style-type: none;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #605cad;
+    list-style: none;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown-menu{
+    top: 60px;
+    right: 0px;
+    left: unset;
+    width: 460px;
+    box-shadow: 0px 5px 7px -1px #c1c1c1;
+    padding-bottom: 0px;
+    padding: 0px;
+}
+.dropdown-menu:before{
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 12px;
+    border:10px solid #343A40;
+    border-color: transparent transparent #343A40 transparent;
+}
+.notification-box {
+    padding: 10px 0px;
+    height: 300px;
+    width: auto;
+    overflow-y: scroll;
+}
+.notification-box {
+    padding: 10px 0px;
+    height: 300px;
+    width: auto;
+    overflow-y: scroll;
+    background-color: #a6a9ed;
+}
+@media (max-width: 640px) {
+    .dropdown-menu{
+    top: 50px;
+     left: -16px;
+    width: 290px;
+    }
+    
+}

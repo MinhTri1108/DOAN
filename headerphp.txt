@@ -1,0 +1,73 @@
+<?php include_once('headerlogo.php');?>
+ 
+ 	<div id= "wapconter">
+		<div id="header">
+			<nav class = "container">
+				<!-- <a href="" id="logo">
+					<img src="images/1.jpg" alt="">
+				</a> -->
+				<ul id="main-menu">
+					<li><a href="home.php"><i class="fas fa-home"></i></a></li>
+					<li>
+						<a href=""><i class="fas fa-file-alt"></i> Trang cá nhân</a>
+						<ul class="sub-menu">
+							<li><a href="">Thông tin cá nhân</a></li>
+							<li><a href="">Comment giao lưu</a></li>
+						</ul>
+					</li>
+					<li>
+					<!-- <a href=""><i class="fas fa-list-ul"></i> Thông tin khóa dạy</a>
+						<ul class="sub-menu">
+							<li><a href="">Lương</a></li>
+                            <li><a href="">Thưởng</a></li>
+						</ul>
+					</li> -->
+					<li>
+					<a href=""><i class="fas fa-chalkboard-teacher"></i> Giảng dạy</a>
+						<ul class="sub-menu">
+							<li><a href="indexgv.php?id=<?php echo $_SESSION['profilegv']['MaGV']?>&require=thoikhoabieugiangvien.php">Thời khóa biểu giảng viên</a></li>
+							<li><a href="">Cập nhật Tài liệu</a></li>
+							<li><a href="indexgv.php?id=<?php echo $_SESSION['profilegv']['MaGV']?>&require=capnhatdiem.php">Cập nhật điểm</a></li>
+						</ul>
+					</li>
+					<li><a href=""><i class="fas fa-bell"></i> Thông báo</a></li>
+				</ul>
+                <ul id="main-login">
+                    <?php if(isset($_SESSION['profilegv'])) :?>
+                        <li>
+                            <a href="profile.php"><i class="fas fa-user-tie"></i> <?php echo $_SESSION['profilegv']['HoTen']?></a>
+                        </li>
+                        <li>
+                            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                        </li>
+                        <?php else : ?>
+                        <li>
+                            <a href="login.php"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+			</nav>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.js">
+		</script>
+		<script>
+			$(document).ready(function(){
+				//tìm tất cả li có sub-menu và thêm vào nó class hard chird
+				 $('.sub-menu').parent('li').addClass('hard-child')
+				//alert('ok');
+			});
+		</script>
+		<div id="wp-content"></div>
+	</div>
+	<?php
+		if(isset($_GET['require']))
+		{
+			$require=$_GET['require'];
+			if($require =='')
+			{
+				$require="index.php";
+			}
+			require_once $require;
+		}
+	?>
