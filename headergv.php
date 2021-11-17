@@ -34,7 +34,7 @@
 				<a class="nav-link" href=""><i class="fas fa-chalkboard-teacher"></i> Giảng dạy</a>
 				<div class="dropdown-content">
 					<ul class="sub-menu"> 
-						<li><a class="dropdown-item" href="">Thời khóa biểu giảng viên</a></li>
+						<li><a class="dropdown-item" href="thoikhoabieugv.php">Thời khóa biểu giảng viên</a></li>
 						<li><a class="dropdown-item" href="upfile.php">Cập nhật Tài liệu</a></li>
 						<li><a class="dropdown-item" href="">Cập nhật điểm</a></li>
 					</ul>

@@ -1,4 +1,4 @@
-<?php include_once 'header.php';
+<?php include_once 'headergv.php';
 // $sql ="SELECT dsmonhoc.* , lichhoc.*, thungay.*, dstiethoc.*, dsphonghoc.*, dangkymonhoc.* FROM lichhoc
 // INNER JOIN dsmonhoc ON lichhoc.MaMonHoc = dsmonhoc.MaMonHoc
 // INNER JOIN thungay ON lichhoc.idthu = thungay.idthu
@@ -68,8 +68,8 @@
                             $checkp = "SELECT DISTINCT (SoPhong) AS SoPhong FROM dsphonghoc 
                             INNER JOIN lichhoc ON dsphonghoc.idphong = lichhoc.idphong
                             INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = lichhoc.MaMonHoc
-                            INNER JOIN dangkymonhoc ON dangkymonhoc.MaMonHoc = dsmonhoc.MaMonHoc WHERE dangkymonhoc.MaSV = '".$_SESSION['profile']['MaSV']."' AND dsmonhoc.HocKi = '".$hocki."' ORDER BY SoPhong ASC";
-                            $rest = mysqli_query($conn, $checkp);
+                            INNER JOIN dsgiaovien ON dsgiaovien.MaMonHoc = dsmonhoc.MaMonHoc WHERE dsgiaovien.MaGV = '".$_SESSION['profilegv']['MaGV']."' AND dsmonhoc.HocKi = '".$hocki."' ORDER BY SoPhong ASC";
+                            $rest = mysqli_query($conn, $checkp)or die( mysqli_error($conn));
                             while ($p = mysqli_fetch_array($rest)) 
                             {
                                 ?>
@@ -77,13 +77,15 @@
                                     <td><?php echo $p['SoPhong'] ?></td>
                                 <?php
                                 // echo $p['SoPhong'];
-                                $checklist = "SELECT dsmonhoc.* , lichhoc.*, thungay.*, dstiethoc.*, dsphonghoc.*, dangkymonhoc.*, dsgiaovien.HoTen FROM lichhoc
+                                $checklist = "SELECT dsmonhoc.* , lichhoc.*, thungay.*, dstiethoc.*, dsphonghoc.*, dsgiaovien.MaGV, dslop.*,dskhoahoc.* FROM lichhoc
                                 INNER JOIN dsmonhoc ON lichhoc.MaMonHoc = dsmonhoc.MaMonHoc
                                 INNER JOIN thungay ON lichhoc.idthu = thungay.idthu
                                 INNER JOIN  dstiethoc ON lichhoc.idtiethoc = dstiethoc.idtiethoc
                                 INNER JOIN dsphonghoc ON lichhoc.idphong = dsphonghoc.idphong
                                 inner JOIN dsgiaovien ON dsgiaovien.MaMonHoc = dsmonhoc.MaMonHoc
-                                INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc = dangkymonhoc.MaMonHoc WHERE dangkymonhoc.MaSV = '".$_SESSION['profile']['MaSV']."' AND SoPhong ='".$p['SoPhong']."' AND dsmonhoc.HocKi = '".$hocki."' ";
+                                INNER JOIN dslop ON dsmonhoc.MaLop = dslop.MaLop
+                                inner join dskhoahoc on dslop.MaKhoaHoc = dskhoahoc.MaKhoaHoc
+                                WHERE dsgiaovien.MaGV = '".$_SESSION['profilegv']['MaGV']."' AND SoPhong ='".$p['SoPhong']."' AND dsmonhoc.HocKi = '".$hocki."' ";
                                 $res = mysqli_query($conn, $checklist);
                                 // $week_days = array('Monday','Tuesday','Wednesday','Thurshday','Friday', 'Saturday', 'Sunday');
                                 $week_days = array('1','2','3','4','5', '6', '7');
@@ -97,7 +99,7 @@
                                         <?php 
                                         if (array_key_exists($day, $classes)) 
                                         { $row = $classes[$day]; ?>
-                                        <td class = "timetable-workout"><?php echo 'Môn: ' .$row['TenMonHoc'] . '<br />' . $row['TietHoc'] . ': (' . $row['GioHocBD'] . '=>' . $row['GioHocKT'] . ') </br> Giảng viên: ' . $row['HoTen'] . ''?></td>
+                                        <td class = "timetable-workout"><?php echo 'Môn: ' .$row['TenMonHoc'] . '<br />' . $row['TietHoc'] . ': (' . $row['GioHocBD'] . '=>' . $row['GioHocKT'] . ') </br> Lớp học: ' . $row['TenLop'] . '</br> Khóa học: ' . $row['TenKhoaHoc'] . ''?></td>
                                         <?php 
                                         } 
                                         else 

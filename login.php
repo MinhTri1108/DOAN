@@ -39,7 +39,7 @@ if(isset($_POST['dn']))
 		{
 			case '02021':
 				$sql3= "SELECT * FROM dsadmin WHERE MaAdmin = '".$idmauser."' AND Password = '".$password."'";
-				$qr3 =  mysqli_query($conn,$sql3);
+				$qr3 =  mysqli_query($conn,$sql3) or die( mysqli_error($conn));
 				
 				if($row3 = mysqli_fetch_array($qr3))
 				{
