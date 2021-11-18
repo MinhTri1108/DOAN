@@ -11,14 +11,15 @@
 <link rel="stylesheet" type="text/css" href="css/thoikhoabieu.css">
  <!-- time-table -->
     <div class="content" style = "margin-top: 10px;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <h1>Thời Khóa Biểu</h1>
-                <br>
-                <div class="col-md-6">
-                    <div class="form-group">
+    <div class="container">
+            
+            <div class="row justify-content-center"><h1>Thời Khóa Biểu</h1></div>
+            <div class="row ">
+                
+                    <div class=" col  col-md-6 ">
+                        <div class="form-group">
                         <form action="" method="post">
-                        <div class="form-group col-md-6">
+                        
                             <select id="mySelect" class="form-control" name = "hocki">
                             <option value="" disabled selected>---Học kì---</option>
                             <?php
@@ -36,11 +37,14 @@
                             ?>
                             </select>
                         </div>
-                        <div class="form-group col-md-6"><button type="submit" class="btn btn-primary" name = "xem">Xem Thời Khóa Biểu</button></div>
-                        </form>
-                    </div>
+                        </div>
+                    <div class=" col col-md-6  "><button type="submit" class="btn btn-primary" name = "xem">Xem Thời Khóa Biểu</button></div>
+                    </form>
                 </div>
+
             </div>
+        </div>
+        <div class="container"  style = "margin-top: 10px;">
                 
             <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb30">
@@ -118,6 +122,7 @@
                     </table>
                 </div>
 <!-- timetable -->   
+            </div>
             </div>
         </div>
     </div>

@@ -12,36 +12,39 @@
  <!-- time-table -->
     <div class="content" style = "margin-top: 10px;">
         <div class="container">
-            <div class="row justify-content-center">
-                <h1>Thời Khóa Biểu</h1>
-                <br>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <form action="" method="post">
-                        <div class="form-group col-md-6">
-                            <select id="mySelect" class="form-control" name = "hocki">
-                            <option value="" disabled selected>---Học kì---</option>
-                            <?php
-                            $listmh = "SELECT DISTINCT HocKi FROM dsmonhoc";
-                            $kqlistmh = mysqli_query($conn, $listmh);
-                            while ($data = mysqli_fetch_array($kqlistmh))
-                            {
-                                $i=1;
-                            ?>
-                            <option value= "<?php echo $data['HocKi']?>">Học kì: <?php echo $data['HocKi']?></option>
-                            <?php
-                                $i++;
-                            }
+            
+                <div class="row justify-content-center"><h1>Thời Khóa Biểu</h1></div>
+                <div class="row ">
+                    
+                        <div class=" col  col-md-6 ">
+                            <div class="form-group">
+                            <form action="" method="post">
                             
-                            ?>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6"><button type="submit" class="btn btn-primary" name = "xem">Xem Thời Khóa Biểu</button></div>
+                                <select id="mySelect" class="form-control" name = "hocki">
+                                <option value="" disabled selected>---Học kì---</option>
+                                <?php
+                                $listmh = "SELECT DISTINCT HocKi FROM dsmonhoc";
+                                $kqlistmh = mysqli_query($conn, $listmh);
+                                while ($data = mysqli_fetch_array($kqlistmh))
+                                {
+                                    $i=1;
+                                ?>
+                                <option value= "<?php echo $data['HocKi']?>">Học kì: <?php echo $data['HocKi']?></option>
+                                <?php
+                                    $i++;
+                                }
+                                
+                                ?>
+                                </select>
+                            </div>
+                            </div>
+                        <div class=" col col-md-6  "><button type="submit" class="btn btn-primary" name = "xem">Xem Thời Khóa Biểu</button></div>
                         </form>
                     </div>
+
                 </div>
             </div>
-                
+                <div class="container"  style = "margin-top: 10px;">
             <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb30">
                 
@@ -121,6 +124,7 @@
                 </div>
 <!-- timetable -->   
             </div>
+            
         </div>
     </div>
     <!-- /.time-table -->

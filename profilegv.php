@@ -5,7 +5,7 @@
 		<?php if(isset($_SESSION['profilegv'])) : 
 			
 			
-			$sql = "SELECT quyen.*, dsgiaovien.* FROM dsadmin INNER JOIN quyen ON dsgiaovien.idloaitk = quyen.idloaitk WHERE MaGV = '".$_SESSION['profilegv']['MaGV']."'";
+			$sql = "SELECT quyen.*, dsgiaovien.* FROM dsgiaovien INNER JOIN quyen ON dsgiaovien.idloaitk = quyen.idloaitk WHERE MaGV = '".$_SESSION['profilegv']['MaGV']."'";
 			
 			$ds= mysqli_query($conn,$sql) or die ("khong connect duoc");
 

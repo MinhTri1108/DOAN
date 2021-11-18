@@ -25,3 +25,7 @@ a:focus, a:hover { text-decoration: none; color: #f5bfbf; }
 .table-striped tbody tr:nth-of-type(odd) { background-color: hsl(224, 100%, 99%); }
 caption { padding-top: .75rem; padding-bottom: .75rem; color: #26282c; text-align: left; caption-side: bottom; }
 .mb30{margin-bottom:30px;}
+.form-control{
+    float:right !important;
+    width: 175px !important;
+}
