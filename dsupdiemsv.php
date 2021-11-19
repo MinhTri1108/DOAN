@@ -27,7 +27,7 @@ $kq = mysqli_query($conn, $sql);
             ?>
             <h4>Danh sách sinh viên của lớp '<?php echo $data1['TenLop'];?>' </h4>
             <?php
-            }
+            }   
             else
                 {
                     echo'<script type="text/javascript">alert("lỗi ") </script> ';
@@ -50,15 +50,11 @@ $kq = mysqli_query($conn, $sql);
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     
-                    <form action="changepass.php" method = "POST">
+                    <form action="xulydiem.php?malop=<?php echo $layid?>&mamonhoc=<?php echo $layidm?>" method = "POST">
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <!-- <div class="form-group">
-                                <label>Mã sinh viên-Tên Sinh Viên</label>
-                                <input type="text" class="form-control" placeholder="" name = "ma" value = "<?php echo $data['matk'];?><?php $s = sprintf('%04d', $_SESSION['profilegv']['MaGV']); echo $s;?>" >
-                            </div> -->
                             <div class="form-group">
-                            <label>Lớp</label>
+                            <label>Mã sinh viên - Tên sinh viên</label>
                                 <select id="inputState" class="form-control" name ="masv">
                                     <option value="" disabled selected>---Chọn---</option>
                                     <?php
@@ -83,15 +79,15 @@ $kq = mysqli_query($conn, $sql);
                             </div> <!-- form-group end.// -->
                             <div class="form-group">
                                 <label>Điểm chuyên cần</label>
-                                <input type="text" class="form-control" placeholder="VD:10.00, 9.75, 9.50, ..." name ="diemcc">
+                                <input type="text" class="form-control" placeholder="VD:10.00, 9.75, 9.50, ..." name ="diemcc" id = "diemcc" step="any" min="0" max="10">
                             </div> <!-- form-group end.// -->
                             <div class="form-group">
                                 <label>Điểm giữa kì</label>
-                                <input type="text" class="form-control" placeholder="VD:10.00, 9.75, 9.50, ..." name ="diemgk">
+                                <input type="text" class="form-control" placeholder="VD:10.00, 9.75, 9.50, ..." name ="diemgk" id = "diemgk" step="any" min="0" max="10">
                             </div> <!-- form-group end.// -->
                             <div class="form-group">
                                 <label>Điểm thi</label>
-                                <input type="text" class="form-control" placeholder="VD:10.00, 9.75, 9.50, ..." name ="diemthi">
+                                <input type="text" class="form-control" placeholder="VD:10.00, 9.75, 9.50, ..." name ="diemthi" id = "diemthi" step="any" min="0" max="10">
                             </div> <!-- form-group end.// -->
                         </div>
                         
@@ -99,7 +95,7 @@ $kq = mysqli_query($conn, $sql);
                         <div class="modal-footer">
                             
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name = "changepass">Save changes</button>
+                            <button type="submit" class="btn btn-primary" name = "  ">Save</button>
                         </div>
                     </form>
                     
@@ -120,10 +116,12 @@ $kq = mysqli_query($conn, $sql);
                         <th>Giới tính</th>
                         <th>Lớp</th>
                         <th>Khóa</th>
-                        <th>Điểm chuyên cần</th>
-                        <th>Điểm giữa kì</th>
-                        <th>Điểm thi</th>
-                        <th>Điểm trung bình môn</th>
+                        <th>Điểm C.Cần</th>
+                        <th>Điểm G.Kì</th>
+                        <th>Điểm Thi</th>
+                        <th>Điểm TB môn</th>
+                        <th>Sửa</th>
+                        <th>Xóa</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -143,6 +141,8 @@ $kq = mysqli_query($conn, $sql);
                         <th><?php echo $data['DiemGK']?></th>
                         <th><?php echo $data['DiemThi']?></th>
                         <th><?php echo $data['DiemTBMon']?></th>
+                        <th><a href="adminedit.php"><i class="fas fa-user-edit"></i></th>
+                        <th><a href="admindelete.php"><i class="fas fa-trash-alt"></i></th>
                     </tr>
                     <?php
                         $i++;
