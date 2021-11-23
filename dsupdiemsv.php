@@ -35,7 +35,7 @@ $kq = mysqli_query($conn, $sql);
             ?>
         
         </div>
-        <div>
+        <div style="margin-right:40px;">
             <!-- <a href="http://">Nhập điểm</a> -->
             <button type="" class="btn btn-primary" data-toggle="modal" data-target="#nhapDiem">Nhập điểm</button>
         </div>
@@ -43,7 +43,6 @@ $kq = mysqli_query($conn, $sql);
             <div class="modal fade" id="nhapDiem">
                 <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-                
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title" style = "">Nhập điểm sinh viên</h4>
@@ -105,7 +104,8 @@ $kq = mysqli_query($conn, $sql);
             
             </div>
     </div>
-	<div class="row">
+
+	<div class="row" style = "margin-top: 10px;">
 		<div class="col">
 			<table id="example" class="display" width="100%" data-page-length="25" data-order="[[ 0, &quot;asc&quot; ]]">
 		        <thead>
