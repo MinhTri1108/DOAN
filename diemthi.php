@@ -33,6 +33,9 @@ table {
       </tr>
     </thead>  
 <?php
+$sumtb =0;
+$sumtc = 0;
+$sumtb4 =0;
 if($data1 = mysqli_fetch_array($kq1))
     {
         for ($x = 1; $x <= $data1['tong']; $x++) {
@@ -48,7 +51,7 @@ if($data1 = mysqli_fetch_array($kq1))
 
 ?>
  
-    <td colspan="9">Học kì: <?php echo $x;?> (<?php echo $data2['tongtc'];?> tín chỉ)</td>
+    <td colspan="11">Học kì: <?php echo $x;?> (<?php echo $data2['tongtc'];?> tín chỉ)</td>
     
     
     <?php
@@ -58,7 +61,7 @@ if($data1 = mysqli_fetch_array($kq1))
     INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc 
     WHERE dsmonhoc.HocKi = '".$x."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' ORDER BY dsmonhoc.MaMonHoc ASC";
     $kq = mysqli_query($conn, $sql);
-    while ($data = mysqli_fetch_array($kq))
+    while ($data = mysqli_fetch_assoc($kq))
     {
         $i=1;
 
@@ -66,59 +69,61 @@ if($data1 = mysqli_fetch_array($kq1))
     <tbody>
       <tr style="text-align:center">
         <td class="count"></td>
-        <td><?php $row1= array($i => $data['MaMonHoc']); echo $data['MaMonHoc'];?></td>
-        <td><?php echo $data['TenMonHoc'];?></td>
-        <td><?php echo $data['SoTinChi'];?></td>
+        <td><?php echo $data['MaMonHoc'];?></td>
+        <td style="text-align: left"><?php echo $data['TenMonHoc'];?></td>
+        <td><?php echo $data['SoTinChi'];
+        $sumtc += $data['SoTinChi'];
+        ?></td>
         <td><?php echo $data['DiemCC'];?></td>
         <td><?php echo $data['DiemGK'];?></td>
         <td><?php echo $data['DiemThi'];?></td>
         <td><?php echo $data['DiemTBMon'];?></td>
-
+        <td><?php echo $data['Diem4'];?></td>
           <?php
           $dtb = (double)$data['DiemTBMon'];
           if($dtb>=8.5 && $tb<=10)
           { ?>
-            <td><?php echo "4.0";?></td>
+            
             <td><?php echo "A";?></td>
           <?php }
           else if($dtb<8.4 && $dtb >=7.8)
           { ?>
-            <td><?php echo "3.5";?></td>
+            
             <td><?php echo "B+";?></td>
           <?php }
           else if($dtb<7.7 && $dtb>=7.0)
           { ?>
-            <td><?php echo "3.0";?></td>
+            
             <td><?php echo "B";?></td>
           <?php }
           else if($dtb<6.9 && $dtb>=6.3)
           { ?>
-            <td><?php echo "2.5";?></td>
+            
             <td><?php echo "C+";?></td>
           <?php }
           else if($dtb<6.2 && $dtb>=5.5)
           { ?>
-            <td><?php echo "2.0";?></td>
+            
             <td><?php echo "C";?></td>
           <?php }
           else if($dtb<5.4 && $dtb>=4.8)
           {?>
-            <td><?php echo "1.5";?></td>
+            
             <td><?php echo "D+";?></td>
           <?php}
           else if($dtb<4.7  && $dtb>=4.0)
           { ?>
-            <td><?php echo "1.0";?></td>
+            
             <td><?php echo "D";?></td>
           <?php }
           else if($dtb<3.9 && $dtb>=3.0)
           { ?>
-            <td><?php echo "0.5";?></td>
+            
             <td><?php echo "F+";?></td>
           <?php } 
           else
           { ?>
-            <td><?php echo "0.0";?></td>
+            
             <td><?php echo "F";?></td>
           <?php }
           ?>
@@ -134,9 +139,10 @@ if($data1 = mysqli_fetch_array($kq1))
           }
           ?>
         </td>
-        <td>
-          <?php echo tongdiem($data['DiemCC'], $data['DiemGK'])?>
-        </td>
+          <?php 
+            $sumtb +=tongdiem($data['DiemTBMon'], $data['SoTinChi']);
+            $sumtb4 += tongdiem4($data['Diem4'], $data['SoTinChi']);
+          ?>
       </tr>
       
     </tbody>
@@ -144,8 +150,8 @@ if($data1 = mysqli_fetch_array($kq1))
     <?php
             $i++;
         }
-        ?><tr colspan="9">
-          <td colspan="4">
+        ?><tr colspan="11">
+          <td colspan="5">
             <p>- Tổng số tín chỉ: <b><?php echo $data2['tongtc'];?></b> tín chỉ</p>
             <?php $tongtcqm = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.*, SUM(SoTinChi) AS tongqm FROM dsdiem
             INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
@@ -163,53 +169,61 @@ if($data1 = mysqli_fetch_array($kq1))
             WHERE MaLop = '".$_SESSION['profile']['MaLop']."' AND HocKi = '".$x."' AND dsdiem.DiemTBMon < 4";
              $kqrm = mysqli_query($conn, $tongtcrm);
              if($tcrm = mysqli_fetch_array($kqrm))
-             { ?>
-                <p>- Số tín chỉ không đạt: <b><?php echo $tcrm['tongrm'];?></b> tín chỉ</p>
-            <?php }
-            ?> 
-            <p>- Điểm trung bình học kỳ (Hệ 10): </p>
-            <?php
-              $testx =  mysqli_query($conn, $sql);
-              foreach ($testx as $key => $value)
+             { 
+              if($tcrm['tongrm'] == NULL)
               {
-                
-                $chuyen =array(
-                  'stc' => $value['SoTinChi'],
-                  'dtbm' => $value['DiemTBMon'],
-                );
-                // $c = array_merge($chuyen);
-                echo "<pre>";
-                print_r($chuyen);
-                $check[]=array_product($chuyen);
-                echo "</pre>";
-                // print_r($check);
-                echo "<pre>";
-                print_r($check);
-                echo "</pre>";
-                
-                print_r(array_sum($check));
-                
-              
-              }
-            ?>
-            <p>- Điểm trung bình học kỳ (Hệ 4): </p>
-          </td>
-          <td colspan="5">
-          
+              ?>
+              <p>- Số tín chỉ không đạt: <b>0</b> tín chỉ</p> 
 
+            <?php 
+              }
+              else
+              {
+            ?>
+                <p>- Số tín chỉ không đạt: <b><?php echo $tcrm['tongrm'];?></b> tín chỉ</p> 
+            <?php
+              }
+            
+              }
+            ?> 
+            <p>- Điểm trung bình học kỳ (Hệ 10): <?php
+            $diemtbhocki = $sumtb /$sumtc;
+            echo round($diemtbhocki, 2);
+            ?></p>
+            
+            <p>- Điểm trung bình học kỳ (Hệ 4): <?php
+            $diemtbhocki4 = $sumtb4 /$sumtc;
+            echo round($diemtbhocki4, 2);
+            ?></p>
+          </td>
+          <td colspan="6">
+          
+              <?php for($j = 1; $j <= $x; $j++)
+                {
+                  echo $x;
+                  echo '-';
+                  echo $j;
+              ?>
 
             <p>- Số tín chỉ tích lũy: </p>
             <p>- Điểm trung bình tích lũy (Hệ 10): </p>
             <p>- Điểm trung bình tích lũy (Hệ 4): </p>
           </td>
         </tr><?php
+                }
+                echo "<br>";
       }
-      
     }
-    function tongdiem($diemcc, $diemgk)
+
+    function tongdiem($diemtbm, $sotinchi)
     {
-      $tong = ($diemcc + $diemgk);
+      $tong = ($diemtbm * $sotinchi);
       return $tong;
+    }
+    function tongdiem4($diem4, $sotinchi)
+    {
+      $tong4 = ($diem4 * $sotinchi);
+      return $tong4;
     }
     ?>
 
