@@ -59,7 +59,7 @@ if($data1 = mysqli_fetch_array($kq1))
     $sql = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.* FROM dsdiem
     INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
     INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc 
-    WHERE dsmonhoc.HocKi = '".$x."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' ORDER BY dsmonhoc.MaMonHoc ASC";
+    WHERE dsmonhoc.HocKi = '".$x."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' AND dsdiem.MaSV = '".$_SESSION['profile']['MaSV']."' ORDER BY dsmonhoc.MaMonHoc ASC";
     $kq = mysqli_query($conn, $sql);
     while ($data = mysqli_fetch_assoc($kq))
     {
@@ -141,7 +141,9 @@ if($data1 = mysqli_fetch_array($kq1))
         </td>
           <?php 
             $sumtb +=tongdiem($data['DiemTBMon'], $data['SoTinChi']);
+            $diemtbhocki = $sumtb /$sumtc;
             $sumtb4 += tongdiem4($data['Diem4'], $data['SoTinChi']);
+            $diemtbhocki4 = $sumtb4 /$sumtc;
           ?>
       </tr>
       
@@ -186,32 +188,62 @@ if($data1 = mysqli_fetch_array($kq1))
             
               }
             ?> 
-            <p>- Điểm trung bình học kỳ (Hệ 10): <?php
-            $diemtbhocki = $sumtb /$sumtc;
-            echo round($diemtbhocki, 2);
-            ?></p>
+            <p>- Điểm trung bình học kỳ (Hệ 10): <b><?php
             
-            <p>- Điểm trung bình học kỳ (Hệ 4): <?php
-            $diemtbhocki4 = $sumtb4 /$sumtc;
+            echo round($diemtbhocki, 2);
+            ?></b></p>
+            
+            <p>- Điểm trung bình học kỳ (Hệ 4): <b><?php
+            
             echo round($diemtbhocki4, 2);
-            ?></p>
+            ?></b></p>
           </td>
           <td colspan="6">
           
-              <?php for($j = 1; $j <= $x; $j++)
+              <?php
+              for($j = 1; $j <=$x; $j++){
+                $sqltong = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.* FROM dsdiem
+                INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
+                INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc 
+                WHERE dsmonhoc.HocKi <= '".$j."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' AND dsdiem.MaSV = '".$_SESSION['profile']['MaSV']."' ORDER BY dsmonhoc.MaMonHoc ASC";
+                $kqtong =  mysqli_query($conn, $sqltong);
+                $sumtbdiem = 0;
+                $sumtb4diem = 0;
+                $sumtcdiem =0;
+                while($datatong = mysqli_fetch_array($kqtong))
                 {
-                  echo $x;
-                  echo '-';
-                  echo $j;
+                  $a =1;
+                    $sumtcdiem += $datatong['SoTinChi'];
+                    $sumtbdiem +=tongdiem($datatong['DiemTBMon'], $datatong['SoTinChi']);
+                    $sumtb4diem += tongdiem4($datatong['Diem4'], $datatong['SoTinChi']);
+                  $a++;
+                }
+                $sqltc = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.*, SUM(SoTinChi) AS tongtcrt FROM dsdiem
+                INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
+                INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc 
+                WHERE MaLop = '".$_SESSION['profile']['MaLop']."' AND HocKi <= '".$j."' AND dsdiem.DiemTBMon >= 4 AND dsdiem.MaSV = '".$_SESSION['profile']['MaSV']."'";
+                $kqtc = mysqli_query($conn, $sqltc);
+                if($tcrt = mysqli_fetch_array($kqtc))
+                {
+                  $tinchiratruong = $tcrt['tongtcrt']; 
+                }
+            }
               ?>
-
-            <p>- Số tín chỉ tích lũy: </p>
-            <p>- Điểm trung bình tích lũy (Hệ 10): </p>
-            <p>- Điểm trung bình tích lũy (Hệ 4): </p>
+              <p>- Số tín chỉ tích lũy: <b><?php echo $tinchiratruong;?></b></p>
+              <p>- Điểm trung bình tích lũy (Hệ 10): <b><?php
+              $diemtbhocki = $sumtbdiem /$sumtcdiem;
+              echo round($diemtbhocki, 2);
+              ?></b></p>
+              
+              <p>- Điểm trung bình tích lũy (Hệ 4): <b><?php
+              $diemtbhocki4 = $sumtb4diem /$sumtcdiem;
+              echo round($diemtbhocki4, 2);
+              ?></b></p>
+              <p><?php echo $sumtb;?></p>
+              <p><?php echo $sumtbdiem;?></p>
+            
           </td>
         </tr><?php
-                }
-                echo "<br>";
       }
     }
 

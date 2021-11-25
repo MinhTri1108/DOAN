@@ -51,7 +51,7 @@
 					<ul class="sub-menu"> 
 						<li><a class="dropdown-item" href="chuongtrinhdaotao.php">Chương trình đào tạo</a></li>
 						<li><a class="dropdown-item" href="dangkyhocphan.php">Đăng ký học phần</a></li>
-						<li><a class="dropdown-item" href="">Kết quả đăng ký học phần</a></li>
+						<li><a class="dropdown-item" href="ketquadangkyhp.php">Kết quả đăng ký học phần</a></li>
 						<li><a class="dropdown-item" href="hocphi.php">Học phí</a></li>
 					</ul>
 				</div>
