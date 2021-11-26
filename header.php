@@ -62,7 +62,7 @@
 				<div class="dropdown-content">
 					<ul class="sub-menu">
 						<li><a class="dropdown-item" href="thoikhoabieu.php">Thời khóa biểu</a></li>
-						<li><a class="dropdown-item" href="tailieu.php">Tài liệu</a></li>
+						<li><a class="dropdown-item" href="downloadtailieu.php">Tài liệu</a></li>
 						<li><a class="dropdown-item" href="diemthi.php">Xem điểm</a></li>
 					</ul>
 				</div>
