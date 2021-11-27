@@ -1,49 +1,52 @@
 <?php include_once 'header.php';
-$sql = "SELECT * FROM `tailieu`";
+$sql = "SELECT tailieu.*, dsgiaovien.*, dsmonhoc.*,dangkymonhoc.* FROM tailieu
+INNER JOIN dsgiaovien ON dsgiaovien.MaGV = tailieu.MaGV
+INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc =dsgiaovien.MaMonHoc
+INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc = dangkymonhoc.MaMonHoc
+WHERE dangkymonhoc.MaSV = '".$_SESSION['profile']['MaSV']."'";
 $kq= mysqli_query($conn, $sql);
-echo "<table>";
-while($data = mysqli_fetch_array($kq))
-{
-    echo "<tr>";
-    echo "<td>"; echo $data['File']; echo "</td>";
-    echo "<td>";?><a download="<?php echo $data['File'];?>" href="downloads/<?php echo $data['File'];?>">download</a> <?php echo "</td>";
-    echo "</tr>";
-
-}
-echo "</table>";
 ?>
-<?php
-
-if(isset($_GET['path']))
-{
-//Read the filename
-$filename = $_GET['path'];
-//Check the file exists or not
-if(file_exists($filename)) {
-
-//Define header information
-header('Content-Description: File Transfer');
-header('Content-Type: application/octet-stream');
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: 0");
-header('Content-Disposition: attachment; filename="'.basename($filename).'"');
-header('Content-Length: ' . filesize($filename));
-header('Pragma: public');
-
-//Clear system output buffer
-flush();
-
-//Read the size of the file
-readfile($filename);
-
-//Terminate from the script
-die();
+<style>
+table {
+  counter-reset: section;
 }
-else{
-echo "File does not exist.";
+
+.count:before {
+  counter-increment: section;
+  content: counter(section);
 }
-}
-else
-echo "Filename is not defined."
-?>
+</style>
+<div class="container">
+    <h2>Danh sách tài liệu</h2> 
+    <table class="table table-bordered">  
+    <thead>
+      <tr>
+        <th>Người gửi</th>
+        <th>Tên Môn Học</th>
+        <th>Mô tả</th>
+        <th>Tải xuống</th>
+      </tr>
+    </thead>  
+    <?php
+    while ($data = mysqli_fetch_array($kq))
+    {
+        $i=1;
+
+    ?>
+    <tbody>
+    <tr>
+        <th><?php echo $data['HoTen']?></th>
+        <th><?php echo $data['TenMonHoc']?></th>
+        <th><?php echo $data['MoTa']?></th>
+        <th><a download="<?php echo $data['File'];?>" href="downloads/<?php echo $data['File'];?>"><i class="fas fa-file-download"></i> Download</a></th>
+    </tr>
+    
+    </tbody>
+    <?php
+            $i++;
+        }
+
+    ?>
+  </table>
+</div>
 <?php include 'footer.php'; ?>
