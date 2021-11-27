@@ -1,6 +1,6 @@
 <?php 
-$title = 'login';
-include('headerlogo.php');
+session_start();
+include ('config/connect.php');
 
 if(isset($_POST['dn']))
 {
@@ -44,7 +44,7 @@ if(isset($_POST['dn']))
 				if($row3 = mysqli_fetch_array($qr3))
 				{
 					$_SESSION['profileadmin']= $row3;
-			 		header("Location: indexadmin.php?id=$matk");
+			 		header("Location: admin/indexadmin.php?id=$matk");
 
 				}
 				else
@@ -58,7 +58,7 @@ if(isset($_POST['dn']))
 				if($row2 = mysqli_fetch_array($qr2))
 				{
 					$_SESSION['profilegv']= $row2;
-			 		header("Location: indexgv.php?id=$matk");
+			 		header("Location: usergv/indexgv.php?id=$matk");
 
 				}
 				else
@@ -72,7 +72,7 @@ if(isset($_POST['dn']))
 				if($row1 = mysqli_fetch_array($qr1))
 				{
 					$_SESSION['profile']= $row1;
-			 		header("Location: index.php?id=$matk");
+			 		header("Location: usersv/index.php?id=$matk");
 				}
 				else
 				{
@@ -112,5 +112,4 @@ if(isset($_POST['dn']))
 		crossorigin="anonymous">
 	</script>
 	<script src="js/app.js"></script>
-<?php include('footer.php');?>
  

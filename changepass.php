@@ -20,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 {
                     echo("<script>if(confirm('Vui lòng không để trống thông tin.')){
                         // Use AJAX here to send Query to a PHP file
-                        window.location='indexadmin.php';
+                        window.location='admin/indexadmin.php';
                     } else {
-                        window.location='indexadmin.php';
+                        window.location='admin/indexadmin.php';
                     };</script>");
                 }
                 else
@@ -39,17 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                             {
                                 echo("<script>if(confirm('Bạn đổi mật khẩu thành công.')){
                                     // Use AJAX here to send Query to a PHP file
-                                    window.location='indexadmin.php';
+                                    window.location='admin/indexadmin.php';
                                 } else {
-                                    window.location='indexadmin.php';
+                                    window.location='admin/indexadmin.php';
                                 };</script>");
                             }
                             else{
                                 echo("<script>if(confirm('Bạn đổi mật khẩu không thành công.')){
                                     // Use AJAX here to send Query to a PHP file
-                                    window.location='indexadmin.php';
+                                    window.location='admin/indexadmin.php';
                                 } else {
-                                    window.location='indexadmin.php';
+                                    window.location='admin/indexadmin.php';
                                 };</script>");
                             }
                         }
@@ -57,9 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                         {
                             echo("<script>if(confirm('Bạn nhập sai mật khẩu cũ. Vui lòng nhập lại.')){
                                 // Use AJAX here to send Query to a PHP file
-                                window.location='indexadmin.php';
+                                window.location='admin/indexadmin.php';
                             } else {
-                                window.location='indexadmin.php';
+                                window.location='admin/indexadmin.php';
                             };</script>");
                         }
                     }
@@ -67,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     {
                         echo("<script>if(confirm('Nhập lại mật khẩu mới sai.')){
                             // Use AJAX here to send Query to a PHP file
-                            window.location='indexadmin.php';
+                            window.location='admin/indexadmin.php';
                         } else {
-                            window.location='indexadmin.php';
+                            window.location='admin/indexadmin.php';
                         };</script>");
                     }
                 }
@@ -79,9 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 {
                     echo("<script>if(confirm('Vui lòng không để trống thông tin.')){
                         // Use AJAX here to send Query to a PHP file
-                        window.location='indexgv.php';
+                        window.location='usergv/indexgv.php';
                     } else {
-                        window.location='indexgv.php';
+                        window.location='usergv/indexgv.php';
                     };</script>");
                 }
                 else
@@ -98,17 +98,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                             {
                                 echo("<script>if(confirm('Bạn đổi mật khẩu thành công.')){
                                     // Use AJAX here to send Query to a PHP file
-                                    window.location='indexgv.php';
+                                    window.location='usergv/indexgv.php';
                                 } else {
-                                    window.location='indexgv.php';
+                                    window.location='usergv/indexgv.php';
                                 };</script>");
                             }
                             else{
                                 echo("<script>if(confirm('Bạn đổi mật khẩu không thành công.')){
                                     // Use AJAX here to send Query to a PHP file
-                                    window.location='indexgv.php';
+                                    window.location='usergv/indexgv.php';
                                 } else {
-                                    window.location='indexgv.php';
+                                    window.location='usergv/indexgv.php';
                                 };</script>");
                             }
                         }
@@ -116,9 +116,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                         {
                             echo("<script>if(confirm('Bạn nhập sai mật khẩu cũ. Vui lòng nhập lại.')){
                                 // Use AJAX here to send Query to a PHP file
-                                window.location='indexgv.php';
+                                window.location='usergv/indexgv.php';
                             } else {
-                                window.location='indexgv.php';
+                                window.location='usergv/indexgv.php';
                             };</script>");
                         }
                     }
@@ -126,9 +126,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     {
                         echo("<script>if(confirm('Nhập lại mật khẩu mới sai.')){
                             // Use AJAX here to send Query to a PHP file
-                            window.location='indexgv.php';
+                            window.location='usergv/indexgv.php';
                         } else {
-                            window.location='indexgv.php';
+                            window.location='usergv/indexgv.php';
                         };</script>");
                     }
                 }
@@ -138,9 +138,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 {
                     echo("<script>if(confirm('Vui lòng không để trống thông tin.')){
                         // Use AJAX here to send Query to a PHP file
-                        window.location='index.php';
+                        window.location='usersv/index.php';
                     } else {
-                        window.location='index.php';
+                        window.location='usersv/index.php';
                     };</script>");
                 }
                 else
@@ -157,17 +157,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                             {
                                 echo("<script>if(confirm('Bạn đổi mật khẩu thành công.')){
                                     // Use AJAX here to send Query to a PHP file
-                                    window.location='index.php';
+                                    window.location='usersv/index.php';
                                 } else {
-                                    window.location='index.php';
+                                    window.location='usersv/index.php';
                                 };</script>");
                             }
                             else{
                                 echo("<script>if(confirm('Bạn đổi mật khẩu không thành công.')){
                                     // Use AJAX here to send Query to a PHP file
-                                    window.location='index.php';
+                                    window.location='usersv/index.php';
                                 } else {
-                                    window.location='index.php';
+                                    window.location='usersv/index.php';
                                 };</script>");
                             }
                         }
@@ -175,9 +175,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                         {
                             echo("<script>if(confirm('Bạn nhập sai mật khẩu cũ. Vui lòng nhập lại.')){
                                 // Use AJAX here to send Query to a PHP file
-                                window.location='indexadmin.php';
+                                window.location='usersv/index.php';
                             } else {
-                                window.location='indexadmin.php';
+                                window.location='usersv/index.php';
                             };</script>");
                         }
                     }
@@ -185,9 +185,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     {
                         echo("<script>if(confirm('Nhập lại mật khẩu mới sai.')){
                             // Use AJAX here to send Query to a PHP file
-                            window.location='index.php';
+                            window.location='usersv/index.php';
                         } else {
-                            window.location='index.php';
+                            window.location='usersv/index.php';
                         };</script>");
                     }
                 }

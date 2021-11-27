@@ -1,6 +1,3 @@
-<?php session_start();
-include ('config/connect.php');
-?>
 <html>
 <head>
 	<title>Trường ĐH Quy Nhơn</title>
