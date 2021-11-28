@@ -94,7 +94,7 @@ if(isset($_POST['send']))
                             ?>]-<?php echo $data['HoTen']?></th>
                             <th><?php echo $data['noidung']?></th>
                             <th><?php echo $data['ThoiGian']?></th>
-                            <th><a href=""><i class="fas fa-trash-alt"></i></th>
+                            <th><a href="xoathongbao.php?mauser=<?php echo $data['matk']?><?php $s = sprintf('%04d', $data['MaSV']); echo $s;?>&thoigian=<?php echo $data['ThoiGian']?>"><i class="fas fa-trash-alt"></i></th>
                         </tr>
                     <?php
                         $i++;

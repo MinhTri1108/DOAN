@@ -1,4 +1,9 @@
 <?php include_once 'headeradmin.php';
+$idmh = $_GET['mamh'];
+$locsql = "SELECT dslop.*, dsmonhoc.*, hocphi.* FROM dsmonhoc 
+INNER JOIN dslop ON dsmonhoc.MaLop = dslop.MaLop 
+INNER JOIN hocphi ON dsmonhoc.SoTinChi = hocphi.SoTinChi 
+WHERE MaMonHoc = '".$idmh."'";
 if(isset($_POST['save']))
 {
     $tenmonhoc = isset($_POST['tenmonhoc']) ? $_POST['tenmonhoc'] : '';
@@ -32,7 +37,9 @@ if(isset($_POST['save']))
             }
     }
 }
-
+$kqloc= mysqli_query($conn,$locsql);
+if($ketqua= mysqli_fetch_array($kqloc))
+{
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -45,14 +52,14 @@ if(isset($_POST['save']))
         <form method="POST" action="">
             <div class="form-group">
                 <label>Tên môn học</label>
-                <input type="text" class="form-control" placeholder="" name = "tenmonhoc">
+                <input type="text" class="form-control" placeholder="" name = "tenmonhoc" value = "<?php echo $ketqua['TenMonHoc']?>">
             </div> <!-- form-group end.// -->
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label>Số tín chỉ</label>
                 <select id="inputState" class="form-control" name ="tinchi">
-                    <option value="" disabled selected>---Chọn---</option>
+                    <option value="<?php echo $ketqua['SoTinChi']?>" disabled selected><?php echo $ketqua['SoTinChi']?> Tín chỉ</option>
                     <?php
                     $listhp = "SELECT * FROM hocphi";
                     $kqlisthp = mysqli_query($conn, $listhp);
@@ -70,7 +77,7 @@ if(isset($_POST['save']))
                 <div class="form-group col-md-6">
                 <label>Học kì</label>
                 <select id="inputState" class="form-control" name ="hocki">
-                    <option value="" disabled selected>---Chọn---</option>
+                    <option value="<?php echo $ketqua['HocKi']?>" disabled selected>Học kì: <?php echo $ketqua['HocKi']?></option>
                     <option value="1" >Học kì 1</option>
                     <option value="2" >Học kì 2</option>
                     <option value="3" >Học kì 3</option>
@@ -86,7 +93,7 @@ if(isset($_POST['save']))
             <div class="form-group">
             <label>Lớp</label>
                 <select id="inputState" class="form-control" name ="lop">
-                    <option value="" disabled selected>---Chọn---</option>
+                    <option value="<?php echo $ketqua['MaLop']?>" disabled selected><?php echo $ketqua['TenLop']?></option>
                     <?php
                     $listlop = "SELECT * FROM dslop";
                     $kqlistl = mysqli_query($conn, $listlop);
@@ -112,5 +119,12 @@ if(isset($_POST['save']))
         </div> <!-- card.// -->
         </div> <!-- col.//-->
     </div> <!-- row.//-->
-</div> 
+</div>
+<?php
+}
+else
+{
+    echo'<script type="text/javascript">alert("Không kiểm tra được") </script> ';
+}
+?>
 <?php include '../footer.php'; ?>

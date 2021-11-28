@@ -208,7 +208,7 @@ if(isset($_POST['save']))
                         $i++;
                     }
                     ?>
-                <small class="form-text text-muted" style = "color: #DC143C;">BẠN VUI LÒNG CLICK VÀO CHỌN LẠI LẠI. XIN LỖI VỀ SỰ CỐ NÀY</small>
+                <small class="form-text text-muted" style = "color: #DC143C;">BẠN VUI LÒNG CLICK VÀO CHỌN LẠI. XIN LỖI VỀ SỰ CỐ NÀY</small>
             </div> <!-- form-group end.// -->
             <?php elseif($mamonhoc) : ?>
             <div class="form-group">
