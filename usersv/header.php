@@ -6,7 +6,10 @@ if(!isset($_SESSION['profile'])) {
         exit();
     }
 ?>
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
 <link rel="stylesheet" type="text/css" href="../css/header.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../font-awesome/css/all.css">
 	<?php
 		$sql = "SELECT quyen.*, dssinhvien.* FROM dssinhvien INNER JOIN quyen ON dssinhvien.idloaitk = quyen.idloaitk WHERE MaSV = '".$_SESSION['profile']['MaSV']."'";
 			
@@ -46,7 +49,7 @@ if(!isset($_SESSION['profile'])) {
 				<div class="dropdown-content">
 					<ul class="sub-menu"> 
 						<li><a class="dropdown-item" href="profile.php">Thông tin cá nhân</a></li>
-						<li><a class="dropdown-item" href="#">Nhắn tin</a></li>
+						<li><a class="dropdown-item" href="viewfriend.php">Nhắn tin</a></li>
 					</ul>
 				</div>
 			</li>
@@ -109,7 +112,7 @@ if(!isset($_SESSION['profile'])) {
 								} ?>" href="viewtb.php?id=<?php echo $tb['id'] ?>">
 						<div class="row">
 						<div class="col-lg-3 col-sm-3 col-3 text-center">
-						<img src="images/avt.png" class="w-50 rounded-circle">
+						<img src="../images/avt.png" class="w-50 rounded-circle">
 						</div>
 
 						<!-- noidung -->
@@ -142,7 +145,7 @@ if(!isset($_SESSION['profile'])) {
 					<ul class="sub-menu">
 						<li><a class="dropdown-item" href="profile.php"><i class="fas fa-id-badge"></i> Thông tin</a></li>
 						<li><a class="dropdown-item" href="../changepass.php" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fas fa-exchange-alt"></i> Đổi mật khẩu</a></li>
-						<li><a class="dropdown-item" href="../logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+						<li><a class="dropdown-item" href="../logout.php?id=<?php echo $data['matk'];?><?php $s = sprintf('%04d', $_SESSION['profile']['MaSV']); echo $s;?>"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
 					</ul>
 				</div>
 			</li>

@@ -1,4 +1,4 @@
-<?php include ('../config/connect.php');
+<?php include_once ('../config/connect.php');
 $id = $_GET['id'];
 $query ="UPDATE `thongbaosv` SET `status` = '0' WHERE `MaSV` = '".$id."'";
 $kq= mysqli_query($conn, $query);

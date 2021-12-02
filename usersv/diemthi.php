@@ -49,105 +49,105 @@ if($data1 = mysqli_fetch_array($kq1))
                 if($data2 = mysqli_fetch_array($kq2))
                 {
 
-?>
+            ?>
  
-    <td colspan="11">Học kì: <?php echo $x;?> (<?php echo $data2['tongtc'];?> tín chỉ)</td>
-    
-    
-    <?php
-    }
-    $sql = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.* FROM dsdiem
-    INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
-    INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc 
-    WHERE dsmonhoc.HocKi = '".$x."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' AND dsdiem.MaSV = '".$_SESSION['profile']['MaSV']."' ORDER BY dsmonhoc.MaMonHoc ASC";
-    $kq = mysqli_query($conn, $sql);
-    while ($data = mysqli_fetch_assoc($kq))
-    {
-        $i=1;
-
-    ?>
-    <tbody>
-      <tr style="text-align:center">
-        <td class="count"></td>
-        <td><?php echo $data['MaMonHoc'];?></td>
-        <td style="text-align: left"><?php echo $data['TenMonHoc'];?></td>
-        <td><?php echo $data['SoTinChi'];
-        $sumtc += $data['SoTinChi'];
-        ?></td>
-        <td><?php echo $data['DiemCC'];?></td>
-        <td><?php echo $data['DiemGK'];?></td>
-        <td><?php echo $data['DiemThi'];?></td>
-        <td><?php echo $data['DiemTBMon'];?></td>
-        <td><?php echo $data['Diem4'];?></td>
-          <?php
-          $dtb = (double)$data['DiemTBMon'];
-          if($dtb>=8.5 && $tb<=10)
-          { ?>
-            
-            <td><?php echo "A";?></td>
-          <?php }
-          else if($dtb<8.4 && $dtb >=7.8)
-          { ?>
-            
-            <td><?php echo "B+";?></td>
-          <?php }
-          else if($dtb<7.7 && $dtb>=7.0)
-          { ?>
-            
-            <td><?php echo "B";?></td>
-          <?php }
-          else if($dtb<6.9 && $dtb>=6.3)
-          { ?>
-            
-            <td><?php echo "C+";?></td>
-          <?php }
-          else if($dtb<6.2 && $dtb>=5.5)
-          { ?>
-            
-            <td><?php echo "C";?></td>
-          <?php }
-          else if($dtb<5.4 && $dtb>=4.8)
-          {?>
-            
-            <td><?php echo "D+";?></td>
-          <?php}
-          else if($dtb<4.7  && $dtb>=4.0)
-          { ?>
-            
-            <td><?php echo "D";?></td>
-          <?php }
-          else if($dtb<3.9 && $dtb>=3.0)
-          { ?>
-            
-            <td><?php echo "F+";?></td>
-          <?php } 
-          else
-          { ?>
-            
-            <td><?php echo "F";?></td>
-          <?php }
-          ?>
-        <td>
+        <td colspan="11">Học kì: <?php echo $x;?> (<?php echo $data2['tongtc'];?> tín chỉ)</td>
+        
+        
         <?php
-          if($dtb>=4.0)
-          {
-            echo '<img style="width:15px;height:15px;" src="images/true.png" title="Bạn đã qua môn này">';
-          }
-          else
-          {
-            echo '<img style="width:15px;height:15px;" src="images/false.png" title="Bạn đã rớt môn này">';
-          }
-          ?>
-        </td>
-          <?php 
-            $sumtb +=tongdiem($data['DiemTBMon'], $data['SoTinChi']);
-            $diemtbhocki = $sumtb /$sumtc;
-            $sumtb4 += tongdiem4($data['Diem4'], $data['SoTinChi']);
-            $diemtbhocki4 = $sumtb4 /$sumtc;
-          ?>
-      </tr>
-      
-    </tbody>
+        }
+        $sql = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.* FROM dsdiem
+        INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
+        INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc 
+        WHERE dsmonhoc.HocKi = '".$x."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' AND dsdiem.MaSV = '".$_SESSION['profile']['MaSV']."' ORDER BY dsmonhoc.MaMonHoc ASC";
+        $kq = mysqli_query($conn, $sql);
+        while ($data = mysqli_fetch_assoc($kq))
+        {
+            $i=1;
+
+        ?>
+        <tbody>
+          <tr style="text-align:center">
+            <td class="count"></td>
+            <td><?php echo $data['MaMonHoc'];?></td>
+            <td style="text-align: left"><?php echo $data['TenMonHoc'];?></td>
+            <td><?php echo $data['SoTinChi'];
+            $sumtc += $data['SoTinChi'];
+            ?></td>
+            <td><?php echo $data['DiemCC'];?></td>
+            <td><?php echo $data['DiemGK'];?></td>
+            <td><?php echo $data['DiemThi'];?></td>
+            <td><?php echo round($data['DiemTBMon'],2);?></td>
+            <td><?php echo $data['Diem4'];?></td>
+              <?php
+              $dtb = (double)$data['DiemTBMon'];
+              if($dtb>=8.5 && $tb<=10)
+              { ?>
+                
+                <td><?php echo "A";?></td>
+              <?php }
+              else if($dtb<8.4 && $dtb >=7.8)
+              { ?>
+                
+                <td><?php echo "B+";?></td>
+              <?php }
+              else if($dtb<7.7 && $dtb>=7.0)
+              { ?>
+                
+                <td><?php echo "B";?></td>
+              <?php }
+              else if($dtb<6.9 && $dtb>=6.3)
+              { ?>
+                
+                <td><?php echo "C+";?></td>
+              <?php }
+              else if($dtb<6.2 && $dtb>=5.5)
+              { ?>
+                
+                <td><?php echo "C";?></td>
+              <?php }
+              else if($dtb<5.4 && $dtb>=4.8)
+              {?>
+                
+                <td><?php echo "D+";?></td>
+              <?php}
+              else if($dtb<4.7  && $dtb>=4.0)
+              { ?>
+                
+                <td><?php echo "D";?></td>
+              <?php }
+              else if($dtb<3.9 && $dtb>=3.0)
+              { ?>
+                
+                <td><?php echo "F+";?></td>
+              <?php } 
+              else
+              { ?>
+                
+                <td><?php echo "F";?></td>
+              <?php }
+              ?>
+            <td>
+            <?php
+              if($dtb>=4.0)
+              {
+                echo '<img style="width:15px;height:15px;" src="../images/true.png" title="Bạn đã qua môn này">';
+              }
+              else
+              {
+                echo '<img style="width:15px;height:15px;" src="../images/false.png" title="Bạn đã rớt môn này">';
+              }
+              ?>
+            </td>
+              <?php 
+                // $sumtb +=tongdiem($data['DiemTBMon'], $data['SoTinChi']);
+                // $diemtbhocki = $sumtb /$sumtc;
+                // $sumtb4 += tongdiem4($data['Diem4'], $data['SoTinChi']);
+                // $diemtbhocki4 = $sumtb4 /$sumtc;
+              ?>
+          </tr>
+          
+        </tbody>
     
     <?php
             $i++;
@@ -187,12 +187,48 @@ if($data1 = mysqli_fetch_array($kq1))
               }
             
               }
-            ?> 
+            ?>
+            <?php
+            $diemhockix = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.*, iddiem, (DiemTBMon*SoTinChi) AS nhan FROM dsdiem
+            INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
+            INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc
+            WHERE dsmonhoc.HocKi = '".$x."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' AND dsdiem.MaSV = '".$_SESSION['profile']['MaSV']."'";
+            $kqdiemhkx = mysqli_query($conn, $diemhockix);
+            $diemx=0;
+            $tchk=0;
+            while($diemtungki=mysqli_fetch_array($kqdiemhkx))
+            {
+              $diemx += $diemtungki['nhan'];
+              $tchk += $diemtungki['SoTinChi'];
+              // echo $diemx;
+              
+
+            }
+            $diemtbhocki = ($diemx/$tchk);
+            ?>
             <p>- Điểm trung bình học kỳ (Hệ 10): <b><?php
-            
+                                                                                                             
             echo round($diemtbhocki, 2);
-            ?></b></p>
             
+            ?></b></p>
+            <?php
+            $diemhockix4 = "SELECT dsmonhoc.*, dsdiem.*, dangkymonhoc.*, iddiem, (Diem4*SoTinChi) AS nhan4 FROM dsdiem
+            INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dsdiem.MaMonHoc
+            INNER JOIN dangkymonhoc ON dsmonhoc.MaMonHoc =dangkymonhoc.MaMonHoc
+            WHERE dsmonhoc.HocKi = '".$x."' AND dsmonhoc.MaLop = '".$_SESSION['profile']['MaLop']."' AND dsdiem.MaSV = '".$_SESSION['profile']['MaSV']."'";
+            $kqdiemhkx4 = mysqli_query($conn, $diemhockix4);
+            $diemx4=0;
+            $tchk4=0;
+            while($diemtungki4=mysqli_fetch_array($kqdiemhkx4))
+            {
+              $diemx4 += $diemtungki4['nhan4'];
+              $tchk4 += $diemtungki4['SoTinChi'];
+              // echo $diemx;
+              
+
+            }
+            $diemtbhocki4 = ($diemx4/$tchk4);
+            ?>
             <p>- Điểm trung bình học kỳ (Hệ 4): <b><?php
             
             echo round($diemtbhocki4, 2);
@@ -230,17 +266,16 @@ if($data1 = mysqli_fetch_array($kq1))
             }
               ?>
               <p>- Số tín chỉ tích lũy: <b><?php echo $tinchiratruong;?></b></p>
+
               <p>- Điểm trung bình tích lũy (Hệ 10): <b><?php
-              $diemtbhocki = $sumtbdiem /$sumtcdiem;
-              echo round($diemtbhocki, 2);
+              $diemtbhockirt = $sumtbdiem /$sumtcdiem;
+              echo round($diemtbhockirt, 2);
               ?></b></p>
               
               <p>- Điểm trung bình tích lũy (Hệ 4): <b><?php
-              $diemtbhocki4 = $sumtb4diem /$sumtcdiem;
-              echo round($diemtbhocki4, 2);
+              $diemtbhocki4rt = $sumtb4diem /$sumtcdiem;
+              echo round($diemtbhocki4rt, 2);
               ?></b></p>
-              <p><?php echo $sumtb;?></p>
-              <p><?php echo $sumtbdiem;?></p>
             
           </td>
         </tr><?php

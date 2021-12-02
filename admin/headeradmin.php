@@ -7,7 +7,11 @@ if(!isset($_SESSION['profileadmin'])) {
         exit();
     }
 
-?><link rel="stylesheet" type="text/css" href="../css/header.css">
+?>
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/header.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../font-awesome/css/all.css">
 	<?php
 		$sql = "SELECT quyen.*, dsadmin.* FROM dsadmin INNER JOIN quyen ON dsadmin.idloaitk = quyen.idloaitk WHERE MaAdmin = '".$_SESSION['profileadmin']['MaAdmin']."'";
 			

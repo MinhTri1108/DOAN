@@ -6,7 +6,10 @@ if(!isset($_SESSION['profilegv'])) {
         exit();
     }
 ?>
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
 <link rel="stylesheet" type="text/css" href="../css/header.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../font-awesome/css/all.css">
 	<?php
 		$sql = "SELECT quyen.*, dsgiaovien.* FROM dsgiaovien INNER JOIN quyen ON dsgiaovien.idloaitk = quyen.idloaitk WHERE MaGV = '".$_SESSION['profilegv']['MaGV']."'";
 			
@@ -59,7 +62,7 @@ if(!isset($_SESSION['profilegv'])) {
 					<ul class="sub-menu">
 						<li><a class="dropdown-item" href="profilegv.php"><i class="fas fa-id-badge"></i> Thông tin</a></li>
 						<li><a class="dropdown-item" href="changepass.php" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fas fa-exchange-alt"></i> Đổi mật khẩu</a></li>
-						<li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+						<li><a class="dropdown-item" href="../logout.php?id=<?php echo $data['matk'];?><?php $s = sprintf('%04d', $_SESSION['profile']['MaSV']); echo $s;?>"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
 					</ul>
 				</div>
 			</li>

@@ -34,7 +34,7 @@ if(isset($_POST['dn']))
 		// $sql= "SELECT * FROM quyen";
 		// $qr= mysqli_query($conn,$sql);
 		// $quyen = mysqli_fetch_array($qr)
-
+		$status = 'Active now';
 		switch($idmatk)
 		{
 			case '02021':
@@ -58,8 +58,17 @@ if(isset($_POST['dn']))
 				if($row2 = mysqli_fetch_array($qr2))
 				{
 					$_SESSION['profilegv']= $row2;
-			 		header("Location: usergv/indexgv.php?id=$matk");
-
+					$sqlonl= "UPDATE `dssinhvien` SET `Status`='".$status."' WHERE `MaSV`= '".$idmauser."'";
+					$kqonl= mysqli_query($conn,$sqlonl);
+					if($kqonl)
+					{
+						header("Location: usergv/indexgv.php?id=$matk");
+					}
+					else
+					{
+						echo "That bai1";
+					}
+			 		
 				}
 				else
 				{
@@ -72,7 +81,16 @@ if(isset($_POST['dn']))
 				if($row1 = mysqli_fetch_array($qr1))
 				{
 					$_SESSION['profile']= $row1;
-			 		header("Location: usersv/index.php?id=$matk");
+					$sqlonl= "UPDATE `dssinhvien` SET `Status`='".$status."' WHERE `MaSV`= '".$idmauser."'";
+					$kqonl= mysqli_query($conn,$sqlonl);
+					if($kqonl)
+					{
+						header("Location: usersv/index.php?id=$matk");
+					}
+					else
+					{
+						echo "That bai1";
+					}
 				}
 				else
 				{
