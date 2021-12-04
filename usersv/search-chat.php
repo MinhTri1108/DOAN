@@ -1,15 +1,15 @@
 <?php
     session_start();
-    include_once "config.php";
+    include ('../config/connect.php');
 
-    $outgoing_id = $_SESSION['unique_id'];
+    $masv = $_SESSION['profile']['MaSV'];
     $searchTerm = mysqli_real_escape_string($conn, $_POST['searchTerm']);
 
-    $sql = "SELECT * FROM users WHERE NOT unique_id = {$outgoing_id} AND (fname LIKE '%{$searchTerm}%' OR lname LIKE '%{$searchTerm}%') ";
+    $sql = "SELECT * FROM dssinhvien WHERE NOT MaSV = {$masv} AND ( HoTen LIKE '%{$searchTerm}%') ";
     $output = "";
     $query = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($query) > 0){
-        include_once "data.php";
+    if($row= mysqli_num_rows($query) > 0){
+        include_once "datalist.php";
     }else{
         $output .= 'No user found related to your search term';
     }

@@ -1,25 +1,25 @@
-
 <?php include_once "header.php"; ?>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
   <div class="wrapper">
     <section class="users">
-      <header>
+    
+      <!-- <header>
         <div class="content">
           <?php 
-            $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+            $sql = mysqli_query($conn, "SELECT * FROM dssinhvien WHERE MaSV = {$_SESSION['profile']['MaSV']}");
             if(mysqli_num_rows($sql) > 0){
               $row = mysqli_fetch_assoc($sql);
             }
           ?>
-          <img src="php/images/<?php echo $row['img']; ?>" alt="">
+          <img src="../images/avt.png" alt="">
           <div class="details">
-            <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
-            <p><?php echo $row['status']; ?></p>
+            <span><?php echo $row['HoTen']?></span>
+            <p><?php echo $row['Status']; ?></p>
           </div>
         </div>
-        <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Logout</a>
-      </header>
+      </header> -->
       <div class="search">
-        <span class="text">Select an user to start chat</span>
+        <span class="text">Tìm kiếm bạn bè</span>
         <input type="text" placeholder="Enter name to search...">
         <button><i class="fas fa-search"></i></button>
       </div>
@@ -29,4 +29,5 @@
     </section>
   </div>
 
-  <script src="javascript/users.js"></script>
+  <script src="../js/user.js"></script>
+  <?php include_once "../footer.php"; ?>

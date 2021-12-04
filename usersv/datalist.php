@@ -16,7 +16,7 @@
         ($row['Status'] == "Offline now") ? $offline = "offline" : $offline = "";
         ($masv == $row['MaSV']) ? $hid_me = "hide" : $hid_me = "";
 
-        $output .= '<a href="chat.php?masv='. $row['MaSV'] .'">
+        $output .= '<a href="messenger.php?masv='. $row['MaSV'] .'">
                     <div class="content">
                     <img src="../images/avt.png" alt="">
                     <div class="details">
@@ -27,4 +27,5 @@
                     <div class="status-dot '. $offline .'"><i class="fas fa-circle"></i></div>
                 </a>';
     }
+    
 ?>

@@ -5,7 +5,7 @@ INNER JOIN thungay ON lichhoc.idthu = thungay.idthu
 INNER JOIN  dstiethoc ON lichhoc.idtiethoc = dstiethoc.idtiethoc
 INNER JOIN dsphonghoc ON lichhoc.idphong = dsphonghoc.idphong
 INNER JOIN dsgiaovien ON dsmonhoc.MaMonHoc = dsgiaovien.MaMonHoc
-INNER JOIN dslop ON dsmonhoc.MaLop = dslop.MaLop WHERE dslop.MaLop = '".$_SESSION['profile']['MaLop']."'";
+INNER JOIN dslop ON dsmonhoc.MaLop = dslop.MaLop WHERE dslop.MaLop = '".$_SESSION['profile']['MaLop']."' ORDER BY HocKi ASC";
 $kq = mysqli_query($conn,$sql);
 ?> 
 <div class="container-fluid">
@@ -26,7 +26,7 @@ $kq = mysqli_query($conn,$sql);
     
 	<div class="row">
 		<div class="col">
-			<table id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+			<table id="example" class="display" width="100%" data-page-length="25" data-order="[[ 0, &quot;asc&quot; ]]">
 		        <thead>
 		            <tr>
                         <th>Học kì</th>
@@ -90,4 +90,4 @@ $kq = mysqli_query($conn,$sql);
 	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/script.js"></script>
 </div>
-<?php include 'footer.php'; ?>
+<?php include '../footer.php'; ?>

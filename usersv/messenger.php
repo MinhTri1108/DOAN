@@ -1,22 +1,24 @@
 <?php include_once 'header.php';?>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
   <div class="wrapper">
     <section class="chat-area">
       <header>
         <?php 
-        //   $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
-        //   $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$user_id}");
-        //   if(mysqli_num_rows($sql) > 0){
-        //     $row = mysqli_fetch_assoc($sql);
-        //   }else{
-        //     header("location: users.php");
-        //   }
+          $user_id = mysqli_real_escape_string($conn, $_GET['masv']);
+          $sql = mysqli_query($conn, "SELECT * FROM dssinhvien WHERE MaSV = {$user_id}");
+          if(mysqli_num_rows($sql) > 0){
+            $row = mysqli_fetch_assoc($sql);
+          }else{
+            header("location: users.php");
+          }
         ?>
-        <a href="" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+        <a href="viewfriend.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
         <img src="../images/avt.png" alt="">
-        <!-- <div class="details">
-          <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
-          <p><?php echo $row['status']; ?></p>
-        </div> -->
+        
+        <div class="details">
+          <span><?php echo $row['HoTen']; ?></span>
+          <p><?php echo $row['Status']; ?></p>
+        </div>
       </header>
       <div class="chat-box">
 
