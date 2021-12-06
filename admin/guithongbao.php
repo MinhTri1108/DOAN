@@ -65,12 +65,15 @@ if(isset($_POST['send']))
     }
 }
 ?>
+<div class="container-fluid">
 <div class="row" style = "margin-top: 10px;">
-    <div class="col-8">
-            <div class="col" id="form_container">
-            <h2 >Danh sách thông báo(Sinh Viên)</h2>
-                <a href="thongbaogiangvien.php" style = "float: right;" class="btn btn-primary">Danh sách các thông báo đã gửi tới giảng viên <i class="fas fa-chevron-circle-right"></i></a>
-                <table style = "margin-top: 10px;" id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+    <div class="col-8" id="form_container">
+                <div class="row">
+                <h2 >Danh sách thông báo(Sinh Viên)</h2>
+                <a href="thongbaogiangvien.php" style = "margin-left:45px;" class="btn btn-primary">Danh sách các thông báo đã gửi tới giảng viên <i class="fas fa-chevron-circle-right"></i></a>
+                </div>
+                <div style = "margin-top: 20px !important;">s
+                <table  id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
                     <thead>
                         <th>ID/ Người gửi</th>
                         <th>ID/ Người nhận</th>
@@ -102,7 +105,8 @@ if(isset($_POST['send']))
                     ?>
                     </tbody>
                 </table>
-        </div>
+                </div>
+        
     </div>
     <div class="col-4">
             <div class="col" id="form_container">
@@ -138,6 +142,7 @@ if(isset($_POST['send']))
                 
         </div>
     </div>
+</div>
 </div>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

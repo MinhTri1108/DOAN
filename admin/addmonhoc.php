@@ -34,6 +34,9 @@ if(isset($_POST['save']))
 }
 
 ?>
+<div class="row ml-3 mt-3">
+    <a href="listctdtlop.php" class="btn btn-primary"><i class="fas fa-undo-alt"></i> Quay lại</a>
+    </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">

@@ -8,10 +8,13 @@ $kqgv = mysqli_query($conn, $sqlgv);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 ?>
-<div class="row">
-            <div class="col" id="form_container">
-            <a href="guithongbao.php" class="btn btn-primary"><i class="fas fa-undo-alt"></i> Quay lại</a>
-            <h2 >Danh sách thông báo(Giảng Viên)</h2>
+<div class="containe">
+                <div class="row ml-2 mt-3 mr-2">
+                    <div class="col-12 col-md-4"><a href="guithongbao.php" class="btn btn-primary"><i class="fas fa-undo-alt"></i> Quay lại</a></div>
+                    <div class="col-12 col-md-6"><h2>Danh sách thông báo(Giảng Viên)</h2></div>
+                </div>
+                <div class="row ml-3 mt-3 mr-2">
+                    <div class="col-12 col-md-12 ">
                 <table style = "margin-top: 10px;" id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
                     <thead>
                         <th>ID/ Người gửi</th>
@@ -44,7 +47,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                     ?>
                     </tbody>
                 </table>
-        </div>
+                </div>
+                </div>
     </div>
     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

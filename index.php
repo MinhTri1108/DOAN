@@ -29,10 +29,14 @@ body {
 }
 </style>
 <body>
-
-<h2>Background Cover</h2>
-
-<p>Set the background-size property to "cover" and the background image will cover the entire element, in this case the BODY element.</p>
-<a href="login.php" class="btn btn-light">login tại đây</a>
+<div class="container">
+	<div class="row justify-content-center">
+	<h2>Background Cover</h2>
+	<p>Set the background-size property to "cover" and the background image will cover the entire element, in this case the BODY element.</p>
+	</div>
+	<div class="row justify-content-center">
+	<a href="login.php" class="btn btn-light">login tại đây</a>
+	</div>
+</div>
 </body>
 </html>

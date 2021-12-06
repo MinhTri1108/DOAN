@@ -110,7 +110,7 @@ if(!isset($_SESSION['profile'])) {
 								if($tb['status']=='1'){
 									echo " font-weight:bold;";
 								} ?>" href="viewtb.php?id=<?php echo $tb['id'] ?>">
-						<div class="row">
+						<div class="row" style="width:100% !important;">
 						<div class="col-lg-3 col-sm-3 col-3 text-center">
 						<img src="../images/avt.png" class="w-50 rounded-circle">
 						</div>
@@ -124,8 +124,9 @@ if(!isset($_SESSION['profile'])) {
 							</em>
 							<br>
 							<small class="text-primary"><?php echo $tb['ThoiGian']?></small>
+							<hr>
 						</div>
-							
+						
 						</div>
 						</a>
 						<?php
