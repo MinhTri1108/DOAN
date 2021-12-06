@@ -11,6 +11,16 @@ $idmauser = ltrim($idma, '0');
 $status = "Offline now";
 switch($idmatk)
 {
+    case '02021':
+        $sqloff= "UPDATE `dsadmin` SET `Status`='".$status."' WHERE `MaAdmin`= '".$idmauser."'";
+        $kqonl= mysqli_query($conn,$sqloff);
+        if($kqonl)
+        {
+            session_destroy(); //destroy the session
+            header("location:login.php"); //to redirect back to "index.php" after logging out
+            exit();
+        }
+        break;
     case '12021':
         $sqloff= "UPDATE `dsgiaovien` SET `Status`='".$status."' WHERE `MaGV`= '".$idmauser."'";
         $kqonl= mysqli_query($conn,$sqloff);

@@ -1,11 +1,14 @@
 <?php 
     session_start();
     include_once "../config/connect.php";
-    $outgoing_id = $_SESSION['unique_id'];
-    $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
+    $nguoigui = $_SESSION['profile']['MaSV'];
+    $nguoinhan = mysqli_real_escape_string($conn, $_POST['nguoinhan']);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $timestamp = time();
+    $thoigian = date ("Y-m-d H:i:s", $timestamp);
     if(!empty($message)){
-        $sql = mysqli_query($conn, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg)
-                                    VALUES ({$incoming_id}, {$outgoing_id}, '{$message}')") or die();
+        $sql = mysqli_query($conn, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg, ThoiGian)
+                                    VALUES ({$nguoinhan}, {$nguoigui}, '{$message}', ($thoigian))") or die();
     } 
 ?>
