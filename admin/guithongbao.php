@@ -72,7 +72,7 @@ if(isset($_POST['send']))
                 <h2 >Danh sách thông báo(Sinh Viên)</h2>
                 <a href="thongbaogiangvien.php" style = "margin-left:45px;" class="btn btn-primary">Danh sách các thông báo đã gửi tới giảng viên <i class="fas fa-chevron-circle-right"></i></a>
                 </div>
-                <div style = "margin-top: 20px !important;">s
+                <div style = "margin-top: 20px !important;">
                 <table  id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
                     <thead>
                         <th>ID/ Người gửi</th>
