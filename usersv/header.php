@@ -1,6 +1,6 @@
 <?php session_start();
 include_once('../headerlogo.php');
-include ('../config/connect.php');
+include_once ('../config/connect.php');
 if(!isset($_SESSION['profile'])) {
         header("location: ../login.php");
         exit();
@@ -49,7 +49,7 @@ if(!isset($_SESSION['profile'])) {
 				<div class="dropdown-content">
 					<ul class="sub-menu"> 
 						<li><a class="dropdown-item" href="profile.php">Thông tin cá nhân</a></li>
-						<li><a class="dropdown-item" href="viewfriend.php">Nhắn tin</a></li>
+						<li><a class="dropdown-item" href="dsfriend.php">Nhắn tin</a></li>
 					</ul>
 				</div>
 			</li>

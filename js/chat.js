@@ -19,7 +19,7 @@ inputField.onkeyup = ()=>{
 
 sendBtn.onclick = ()=>{
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "usersv/insert-chat.php", true);
+    xhr.open("POST", "../chat/insert-chat.php", true);
     xhr.onload = ()=>{
       if(xhr.readyState === XMLHttpRequest.DONE){
           if(xhr.status === 200){
@@ -41,7 +41,7 @@ chatBox.onmouseleave = ()=>{
 
 setInterval(() =>{
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "usersv/get-chat.php", true);
+    xhr.open("POST", "chat/get-chat.php", true);
     xhr.onload = ()=>{
       if(xhr.readyState === XMLHttpRequest.DONE){
           if(xhr.status === 200){
@@ -54,7 +54,7 @@ setInterval(() =>{
       }
     }
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("nguoinhan="+nguoinhan);
+    xhr.send("incoming_id="+incoming_id);
 }, 500);
 
 function scrollToBottom(){

@@ -8,7 +8,7 @@ if($data1 = mysqli_fetch_array($kq1))
         for ($x = 1; $x <= $data1['tong']; $x++) {
             echo $x;
             for($j = 1; $j <=$x; $j++){
-                echo "Học kì $j <br>ád";
+                echo "Học kì $j <br>";
             }
         }}
 ?>

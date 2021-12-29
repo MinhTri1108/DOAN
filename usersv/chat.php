@@ -1,22 +1,22 @@
-<?php include_once 'header.php';?>
+<?php include_once "header.php"; ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<body>
   <div class="wrapper">
     <section class="chat-area">
-      <header>
+      <header class= "nd">
         <?php 
-          $user_id = mysqli_real_escape_string($conn, $_GET['masv']);
+          $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
           $sql = mysqli_query($conn, "SELECT * FROM dssinhvien WHERE MaSV = {$user_id}");
           if(mysqli_num_rows($sql) > 0){
             $row = mysqli_fetch_assoc($sql);
           }else{
-            header("location: users.php");
+            header("location: dsfriend.php");
           }
         ?>
-        <a href="viewfriend.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+        <a href="dsfriend.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
         <img src="../images/avt.png" alt="">
-        
         <div class="details">
-          <span><?php echo $row['HoTen']; ?></span>
+          <span><?php echo $row['HoTen'] ?></span>
           <p><?php echo $row['Status']; ?></p>
         </div>
       </header>
@@ -32,4 +32,6 @@
   </div>
 
   <script src="../js/chat.js"></script>
-<?php include '../footer.php'; ?>
+
+</body>
+</html>

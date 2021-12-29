@@ -1,8 +1,7 @@
+
 <?php 
-    session_start();
-    if(isset($_SESSION['unique_id'])){
-        include_once "config.php";
-        $outgoing_id = $_SESSION['unique_id'];
+    if(isset($_SESSION['profile']['MaSV'])){
+        $outgoing_id = $_SESSION['profile']['MaSV'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $output = "";
         $sql = "SELECT * FROM messages LEFT JOIN users ON users.unique_id = messages.outgoing_msg_id
@@ -19,7 +18,7 @@
                                 </div>';
                 }else{
                     $output .= '<div class="chat incoming">
-                                <img src="php/images/'.$row['img'].'" alt="">
+                                <img src="../images/avt.png" alt="">
                                 <div class="details">
                                     <p>'. $row['msg'] .'</p>
                                 </div>

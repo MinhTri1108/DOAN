@@ -1,9 +1,14 @@
 <?php include_once "header.php"; ?>
+<?php 
+  if(!isset($_SESSION['profile'])){
+    header("location: ../login.php");
+  }
+?>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<body>
   <div class="wrapper">
-    <section class="users">
-    
-      <!-- <header>
+    <div class="users">
+      <div class="nd">
         <div class="content">
           <?php 
             $sql = mysqli_query($conn, "SELECT * FROM dssinhvien WHERE MaSV = {$_SESSION['profile']['MaSV']}");
@@ -17,7 +22,7 @@
             <p><?php echo $row['Status']; ?></p>
           </div>
         </div>
-      </header> -->
+      </div>
       <div class="search">
         <span class="text">Tìm kiếm bạn bè</span>
         <input type="text" placeholder="Enter name to search...">
@@ -26,8 +31,7 @@
       <div class="users-list">
   
       </div>
-    </section>
+    </div>
   </div>
 
-  <script src="../js/user.js"></script>
-  <?php include_once "../footer.php"; ?>
+  <script src="../js/friendw.js"></script>
