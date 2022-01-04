@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include ('config/connect.php');
-
+include_once('headerlogo.php');
 if(isset($_POST['dn']))
 {
 	$matk = $_POST['MaTK'];
@@ -58,7 +58,8 @@ if(isset($_POST['dn']))
 				if($row2 = mysqli_fetch_array($qr2))
 				{
 					$_SESSION['profilegv']= $row2;
-					$sqlonl= "UPDATE `dssinhvien` SET `Status`='".$status."' WHERE `MaSV`= '".$idmauser."'";
+					$sqlonl= "UPDATE `dsgiaovien` SET `Status`='".$status."' WHERE `MaGV`= '".$idmauser."'";
+					echo $sqlonl;
 					$kqonl= mysqli_query($conn,$sqlonl);
 					if($kqonl)
 					{
@@ -66,7 +67,7 @@ if(isset($_POST['dn']))
 					}
 					else
 					{
-						echo "That bai1";
+						echo "That bai";
 					}
 			 		
 				}
@@ -89,7 +90,7 @@ if(isset($_POST['dn']))
 					}
 					else
 					{
-						echo "That bai1";
+						echo "That bai";
 					}
 				}
 				else

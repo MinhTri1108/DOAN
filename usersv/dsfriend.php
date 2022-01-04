@@ -35,3 +35,4 @@
   </div>
 
   <script src="../js/friendw.js"></script>
+  <?php include '../footer.php'; ?>

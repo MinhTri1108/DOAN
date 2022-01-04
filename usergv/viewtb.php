@@ -1,17 +1,13 @@
-<?php include_once 'header.php';
+<?php include_once 'headergv.php';
 
 $id = $_GET['id'];
 
-$query ="UPDATE `thongbaosv` SET `status` = '0' WHERE `id` = $id;";
+$query ="UPDATE `thongbaogv` SET `status` = '0' WHERE `id` = $id;";
 $kq= mysqli_query($conn, $query);
 
-$sql = "SELECT dssinhvien.MaSV, thongbaosv.*,dsadmin.* FROM thongbaosv 
-INNER JOIN  dssinhvien on dssinhvien.MaSV = thongbaosv.MaSV 
-INNER JOIN dsadmin on dsadmin.MaAdmin = thongbaosv.MaAdmin WHERE thongbaosv.MaSV = '".$_SESSION['profile']['MaSV']."' AND
-thongbaosv.id = '".$id."'";
+$sql = "SELECT quyen.*, dsgiaovien.* FROM dsgiaovien INNER JOIN quyen ON dsgiaovien.idloaitk = quyen.idloaitk WHERE id = '".$id."'";
 $kq1= mysqli_query($conn, $sql);
-if($data = mysqli_fetch_array($kq1))
-{
+
 ?>
 <div class="container">
     <div class="row1">
@@ -27,19 +23,19 @@ if($data = mysqli_fetch_array($kq1))
                                     <div class="col form-group">
                                         <label for="name">
                                             Người gửi :</label>
-                                        <input type="text" class="form-control" value = "<?php echo $data['HoTen']; ?>" readonly = "true">
+                                        <input type="text" class="form-control" id="name"  >
                                     </div>
                                     <div class="col form-group">
                                         <label for="name">
                                             Thời gian :</label>
-                                        <input type="datetime" class="form-control" value = "<?php echo $data['ThoiGian']; ?>"readonly = "true">
+                                        <input type="datetime-local" class="form-control" id="name"  >
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
                                         <label for="message">
                                             Nội dung:</label>
-                                        <textarea class="form-control" type="textarea" maxlength="6000" rows="auto" value = "<?php echo $data['noidung'] ?>" readonly = "true"></textarea>
+                                        <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="auto" value = "<?php echo $data['noidung'] ?>" required></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -49,10 +45,5 @@ if($data = mysqli_fetch_array($kq1))
         </div>
     </div>
 </div>
-<?php }
-else
-{
-    echo "loi";
-}
-?>
+
 <?php include '../footer.php'; ?>

@@ -22,7 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <style>
 body {
-  background-image: url('https://cdn.dribbble.com/users/61715/screenshots/1570276/attachments/241325/plume.png');
+  background-image: url('https://image.freepik.com/free-vector/cartoon-urban-cityscape-with-college-academy-students-university-architecture-background_212168-968.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;  
   background-size: cover;
@@ -31,11 +31,11 @@ body {
 <body>
 <div class="container">
 	<div class="row justify-content-center">
-	<h2>Background Cover</h2>
-	<p>Set the background-size property to "cover" and the background image will cover the entire element, in this case the BODY element.</p>
+	<h2 style = "font-size: 50px">Welcome to QuyNhonUniversity</h2>
+	<p></p>
 	</div>
 	<div class="row justify-content-center">
-	<a href="login.php" class="btn btn-light">login tại đây</a>
+	<a href="login.php" class="btn btn-light">Click to school</a>
 	</div>
 </div>
 </body>

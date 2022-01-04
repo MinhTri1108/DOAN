@@ -12,32 +12,32 @@ $(document).ready(function(){
     });
 });
 // admin check account sinh vien
-function checksaveaccountsv(e){
-    e.preventDefault();
-    var pass = document.getElementById("password");
-    var ht = document.getElementById("hoten");
-    var ns = document.getElementById("ngaysinh");
-    var cccd = document.getElementById("cccd");
-    var diachi= document.getElementById("diachi");
-    var sdt = document.getElementById("sdt");
-    var email  = document.getElementById("email");
-    var khoahoc = document.getElementById("khoahoc");
-    var lop = document.getElementById("lop");
-    if(user.value == ""){
-        document.getElementById("erruser").innerHTML = "Tên khac rong";
-        user.style.background = "red";
+// function checksaveaccountsv(e){
+//     e.preventDefault();
+//     var pass = document.getElementById("password");
+//     var ht = document.getElementById("hoten");
+//     var ns = document.getElementById("ngaysinh");
+//     var cccd = document.getElementById("cccd");
+//     var diachi= document.getElementById("diachi");
+//     var sdt = document.getElementById("sdt");
+//     var email  = document.getElementById("email");
+//     var khoahoc = document.getElementById("khoahoc");
+//     var lop = document.getElementById("lop");
+//     if(user.value == ""){
+//         document.getElementById("erruser").innerHTML = "Tên khac rong";
+//         user.style.background = "red";
         
-        }
-    else if(user.value !="" && password.value != "admin" ){
-        document.getElementById("errpass").innerHTML = "Mật khẩu là admin";
-        password.style.background = "red";
-        }
+//         }
+//     else if(user.value !="" && password.value != "admin" ){
+//         document.getElementById("errpass").innerHTML = "Mật khẩu là admin";
+//         password.style.background = "red";
+//         }
         
     
-    var form = document.getElementById('login-form');
-    form.addEventListener('submit', kiemtra, false);
+//     var form = document.getElementById('login-form');
+//     form.addEventListener('submit', kiemtra, false);
 
-}
+// }
 // $('.header a').on('click', function() {
 //     //selecting the syllabus class
 //       $select = $('<div class="syllabus"></div>');

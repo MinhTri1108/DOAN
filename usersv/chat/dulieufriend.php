@@ -16,7 +16,7 @@
         ($row['Status'] == "Offline now") ? $offline = "offline" : $offline = "";
         ($outgoing_id == $row['MaSV']) ? $hid_me = "hide" : $hid_me = "";
 
-        $output .= '<a href="../chat.php?user_id='. $row['MaSV'] .'">
+        $output .= '<a href="../usersv/chat.php?user_id='. $row['MaSV'] .'">
                     <div class="content">
                     <img src="../images/avt.png" alt="">
                     <div class="details">

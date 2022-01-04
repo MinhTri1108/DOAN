@@ -36,10 +36,9 @@
                     $size = $file['size']/1024/1024; //doi tu byte sang Mb
 
                     if($size<=$sizebd){
-                        $upload = move_uploaded_file($file['tmp_name'], 'downloads/'.$new_file);
+                        $upload = move_uploaded_file($file['tmp_name'], '../downloads/'.$new_file);
                         $sql = "INSERT INTO tailieu VALUES ('', '".$_SESSION['profilegv']['MaGV']."','".$mota."','".$new_file."', '".$thoigian."')";
                         mysqli_query($conn,$sql) or die ("khong connect duoc");
-
                         if(!$upload)
                         {
                             $error[]= 'upload_error';

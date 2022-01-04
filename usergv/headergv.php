@@ -18,7 +18,7 @@ if(!isset($_SESSION['profilegv'])) {
 		$data = mysqli_fetch_array($ds);
 		?>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-	<a class="navbar-brand" href="indexgv.php">Trường DH Quy Nhơn</a>
+	<a class="navbar-brand" href="indexgv.php"><i class="fas fa-home"></i>_Trường DH Quy Nhơn</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -49,10 +49,67 @@ if(!isset($_SESSION['profilegv'])) {
 					</ul>
 				</div>
 			</li>
-			<li  class="nav-item">
+			<!-- <li  class="nav-item">
 				<a class="nav-link" href=""><i class="fas fa-bell"></i> Thông báo</a>
 			</li>
+		</ul> -->
+		<?php $sqltb = "SELECT thongbaogv.* , dsadmin.* FROM thongbaogv INNER JOIN dsadmin ON thongbaosv.MaAdmin = dsadmin.MaAdmin WHERE `MaSV` = '".$_SESSION['profile']['MaGV']."' order by `ThoiGian` DESC";
+			$kqtb = mysqli_query($conn, $sqltb);
+			?>
+			<li class="nav-item dropdown">
+				<a class="nav-link text-light" href="viewtb.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-bell"></i><?php tongtb();?> Thông báo
+					</a>
+
+						<ul class="dropdown-menu">
+						<li class="head text-light bg-dark">
+							<div class="row">
+							<div class="col-lg-12 col-sm-12 col-12">
+							<!-- <span>Xem tất cả</span> -->
+							<a href="" class="float-left text-light"><i class="far fa-eye"></i>Xem tất cả</a>
+							<a href="danhdaudadoc.php?id=<?php echo $_SESSION['profilegv']['MaGV'];?>" class="float-right text-light"><i class="fas fa-check"></i> Đánh đấu đã đọc</a>
+							</div>
+							</div>
+						</li>
+					<li class="notification-box">
+					<?php
+						while ($tb = mysqli_fetch_array($kqtb))
+						{
+							$i=1;
+					?>
+					<a style ="
+							<?php
+								if($tb['status']=='1'){
+									echo " font-weight:bold;";
+								} ?>" href="viewtb.php?id=<?php echo $tb['id'] ?>">
+						<div class="row" style="width:100% !important;">
+						<div class="col-lg-3 col-sm-3 col-3 text-center">
+						<img src="../images/avt.png" class="w-50 rounded-circle">
+						</div>
+
+						<!-- noidung -->
+						<div class="col-lg-9 col-sm-9 col-9" >
+							<small class="text-primary">Người gửi: <?php echo $tb['HoTen']?></small>
+							<br>
+							<em class="text-primary" >
+							<?php echo $tb['noidung']?>
+							</em>
+							<br>
+							<small class="text-primary"><?php echo $tb['ThoiGian']?></small>
+							<hr>
+						</div>
+						
+						</div>
+						</a>
+						<?php
+							$i++;
+						}
+						?>
+					</li>
+					</ul>
+				</li>
 		</ul>
+		
 		
 	</div>
 	<ul class="nav navbar-nav navbar-right">
