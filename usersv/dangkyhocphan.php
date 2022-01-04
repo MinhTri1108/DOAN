@@ -34,7 +34,6 @@ $kq = mysqli_query($conn,$sql);
                         <th>Thời gian</th>
                         <th>Giảng viên</th>
                         <th>Đăng ký</th>
-                        <th>Hủy đăng ký</th>
 		            </tr>
 		        </thead>
 		        <!-- <tfoot>
@@ -73,8 +72,18 @@ $kq = mysqli_query($conn,$sql);
                             Phòng: <?php echo $data['SoPhong']?>
                         </th>
                         <th><?php echo $data['HoTen']?></th>
-                        <th><a href="dangkyhp.php?mahp=<?php echo $data['MaMonHoc']?>&tenmh=<?php echo $data['TenMonHoc']?>&masv=<?php echo $_SESSION['profile']['MaSV']?>"><i class="fas fa-user-edit"></i></th>
-                        <th><a href="huydangkyhp.php?mahp=<?php echo $data['MaMonHoc']?>&tenmh=<?php echo $data['TenMonHoc']?>&masv=<?php echo $_SESSION['profile']['MaSV']?>"><i class="fas fa-trash-alt"></i></th>
+                        <th><?php
+                        $sqlktra = "SELECT * FROM `dangkymonhoc` WHERE `MaSV`= '".$_SESSION['profile']['MaSV']."' AND `MaMonHoc` = '".$data['MaMonHoc']."'";
+                        $kqktra = mysqli_query($conn, $sqlktra);
+                        if(mysqli_num_rows($kqktra))
+                        {
+                            ?><a href="huydangkyhp.php?mahp=<?php echo $data['MaMonHoc']?>&tenmh=<?php echo $data['TenMonHoc']?>&masv=<?php echo $_SESSION['profile']['MaSV']?>"><i class="fas fa-user-edit">_Đã đăng kí</i><?php
+                        }
+                        else
+                        {
+                            ?><a href="dangkyhp.php?mahp=<?php echo $data['MaMonHoc']?>&tenmh=<?php echo $data['TenMonHoc']?>&masv=<?php echo $_SESSION['profile']['MaSV']?>"><i class="fas fa-user-edit">_Đăng kí</i><?php
+                        }
+                        ?></th>
                     </tr>
                 <?php
                     $i++;

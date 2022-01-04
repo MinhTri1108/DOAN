@@ -39,7 +39,7 @@ if($data = mysqli_fetch_array($kq1))
                                     <div class="col form-group">
                                         <label for="message">
                                             Nội dung:</label>
-                                        <textarea class="form-control" type="textarea" maxlength="6000" rows="auto" value = "<?php echo $data['noidung'] ?>" readonly = "true"></textarea>
+                                        <textarea class="form-control" type="textarea" maxlength="6000" rows="7" readonly = "true"><?php echo $data['noidung'] ?></textarea>
                                     </div>
                                 </div>
                             </form>

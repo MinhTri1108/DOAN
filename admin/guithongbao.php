@@ -30,7 +30,7 @@ if(isset($_POST['send']))
                 {
                     echo("<script>if(confirm('Gửi thông báo cho Mã Tài Khoản $iduser thành công. Bạn đồng ý quay trở về \'Trang chủ\' ')){
                         // Use AJAX here to send Query to a PHP file
-                        window.location='indexadmin.php';
+                        window.location='guithongbao.php';
                     } else {
                         window.location='guithongbao.php';
                     };</script>");
@@ -47,7 +47,7 @@ if(isset($_POST['send']))
                 {
                     echo("<script>if(confirm('Gửi thông báo cho Mã Tài Khoản $iduser thành công. Bạn đồng ý quay trở về \'Trang chủ\' ')){
                         // Use AJAX here to send Query to a PHP file
-                        window.location='indexadmin.php';
+                        window.location='guithongbao.php';
                     } else {
                         window.location='guithongbao.php';
                     };</script>");

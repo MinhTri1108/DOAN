@@ -1,6 +1,6 @@
 <?php session_start();
 include_once('../headerlogo.php');
-include ('../config/connect.php');
+include_once ('../config/connect.php');
 if(!isset($_SESSION['profilegv'])) {
         header("location: ../login.php");
         exit();
@@ -16,6 +16,20 @@ if(!isset($_SESSION['profilegv'])) {
 		$ds= mysqli_query($conn,$sql) or die ("khong connect duoc");
 
 		$data = mysqli_fetch_array($ds);
+		function tongtb()
+		{
+			include ('../config/connect.php');
+			$tongtb = "SELECT SUM(status) AS tongtb FROM thongbaogv WHERE MaGV = '".$_SESSION['profilegv']['MaGV']."'";
+			$kq2 = mysqli_query($conn, $tongtb);
+			if($data2 = mysqli_fetch_array($kq2))
+			{
+				echo '<span style="color: red;">', $data2['tongtb'], '</span>';
+			}
+			else
+				{
+					echo'<script type="text/javascript">alert("lỗi ") </script> ';
+        		}
+			}
 		?>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
 	<a class="navbar-brand" href="indexgv.php"><i class="fas fa-home"></i>_Trường DH Quy Nhơn</a>
@@ -53,7 +67,7 @@ if(!isset($_SESSION['profilegv'])) {
 				<a class="nav-link" href=""><i class="fas fa-bell"></i> Thông báo</a>
 			</li>
 		</ul> -->
-		<?php $sqltb = "SELECT thongbaogv.* , dsadmin.* FROM thongbaogv INNER JOIN dsadmin ON thongbaosv.MaAdmin = dsadmin.MaAdmin WHERE `MaSV` = '".$_SESSION['profile']['MaGV']."' order by `ThoiGian` DESC";
+		<?php $sqltb = "SELECT thongbaogv.* , dsadmin.* FROM thongbaogv INNER JOIN dsadmin ON thongbaogv.MaAdmin = dsadmin.MaAdmin WHERE `MaGV` = '".$_SESSION['profilegv']['MaGV']."' order by `ThoiGian` DESC";
 			$kqtb = mysqli_query($conn, $sqltb);
 			?>
 			<li class="nav-item dropdown">

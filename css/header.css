@@ -13,6 +13,18 @@ body{
 img{
     width: 100%;
 }
+ul.nav li.nav-item a {
+    color:rgb(245, 239, 239) !important;
+}
+ul.nav li.nav-item a:hover {
+    color:rgb(2, 81, 252) !important;
+}
+a.navbar-brand{
+    color:rgb(245, 239, 239) !important;
+}
+a.navbar-brand:hover{
+    color:rgb(2, 81, 252) !important;
+}
 li {
     list-style-type: none;
 }
@@ -24,7 +36,7 @@ li {
     display: none;
     position: absolute;
     z-index: 1;
-    background-color: #605cad;
+    background-color: #3f8aec;
     list-style: none;
 }
 .dropdown:hover .dropdown-content{
@@ -58,7 +70,7 @@ li {
     height: 300px;
     width: auto;
     overflow-y: scroll;
-    background-color: #a6a9ed;
+    background-color: #f0f0f1;
 }
 @media (max-width: 640px) {
     .dropdown-menu{
