@@ -4,8 +4,10 @@ if(isset($_POST['save']))
     $doituong = $_POST['doituong'];
     $noidung = $_POST['message'];
     $diadiem = $_POST['diadiem'];
-    $thoigian = $_POST['thoigian'];
+    $ngay = $_POST['ngay'];
+    $gio = $_POST['gio'];
     $ghichu = $_POST['ghichu'];
+
     // echo $doituong;
     // echo "-";
     // echo $noidung;
@@ -15,6 +17,20 @@ if(isset($_POST['save']))
     // echo $thoigian;
     // echo "-";
     // echo $ghichu;
+    // date_default_timezone_set('Asia/Ho_Chi_Minh');
+    // $timestamp = time();
+    // $thoigian = date ("Y-m-d H:i:s", $timestamp);
+    $sql = "INSERT INTO `lichlamviec`
+    VALUES ('','".$_SESSION['profileadmin']['MaAdmin']."','".$noidung."','".$diadiem."','".$ngay."','".$gio."','".$ghichu."','".$doituong."')";
+    // echo $sql;
+    $kq= mysqli_query($conn,$sql);
+    if(($kq))
+    {
+        echo'<script type="text/javascript">alert(Bạn tạo lịch thành công") </script> ';
+    }
+    else{
+        echo'<script type="text/javascript">alert("Thất bại") </script> ';
+    }
 }
 ?>
 <div class="container">
@@ -57,11 +73,18 @@ if(isset($_POST['save']))
                 <input type="text" class="form-control" placeholder="" name = "diadiem">
             </div> <!-- form-group end.// -->
 
-            <div class="form-group">
-                <label>Thời gian</label>
-                <input type="datetime-local" class="form-control" placeholder="" name = "thoigian">
-            </div> <!-- form-group end.// -->
-            
+  
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <label>Ngày</label>
+                <input type="date" class="form-control" name = "ngay">
+                </div> <!-- form-group end.// -->
+                <div class="form-group col-md-6">
+                <label>Giờ</label>
+                <input type="time" class="form-control" name = "gio">
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row.// -->
+
             <div class="form-group">
                 <label>Ghi chú</label>
                 <input type="text" class="form-control" placeholder="" name = "ghichu">

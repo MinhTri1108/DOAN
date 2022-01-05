@@ -1,28 +1,15 @@
 <?php include_once 'headeradmin.php';
-// include ('config/connect.php');
-// $layid = $_GET['id'];
-// $idtk = substr($layid, 0, 5);
-// $check = "SELECT * FROM quyen WHERE matk='".$idtk."'";
-// $query = mysqli_query($conn,$check);
-//     if($tk = mysqli_fetch_array($query))
-//     {
-//         $_SESSION['matk']= $tk;
-
-//     }
-//     else
-//     {
-//         echo '<script type="text/javascript">alert("Tài khoản của bạn chưa login. Xin mời bạn login") </script> ';
-//         header('Location: login.php');
-//     }
-    
-// 
-
-
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+// $timestamp = date();
+// $thoigian = date ("Y-m-d", $timestamp);
+// $futureDate = mktime(0, 0, 0, date("m")+30, date("d"), date("Y"));
+// $thoigian= date("Y-m-d", $futureDate);
+$thoigian = date("Y-m-d");
 ?>
 <link rel="stylesheet" type="text/css" href="../css/date.css">
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-2">
     <div class="calendar">
   <div class="header">
     <a data-action="prev-month" href="javascript:void(0)" title="Previous Month"><i></i></a>
@@ -39,67 +26,80 @@
   </div>
 </div>
     </div>
+    <div class="col-12 col-md-1">
+    </div>
     <div class="col-12 col-md-4">
+      <h5>Lịch giảng viên</h5>
     <table class="table" style="margin-top:50px;">
   <thead>
+    
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nội dung</th>
+      <th scope="col">Địa điểm</th>
+      <th scope="col">Ngày</th>
+      <th scope="col">Giờ</th>
+      <th scope="col">Ghi chú</th>
     </tr>
   </thead>
+  
   <tbody>
+  <?php 
+    $sqlgv = "SELECT * FROM lichlamviec WHERE Ngay = '".$thoigian."' AND DoiTuong = '12021'";
+    $kqgv = mysqli_query($conn, $sqlgv) or die("loi");
+    while($datagv = mysqli_fetch_array($kqgv))
+    {
+      $i=1;
+    
+    ?>
+    
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td><?php echo $datagv['NoiDung']?></td>
+      <td><?php echo $datagv['DiaDiem']?></td>
+      <td><?php echo $datagv['Ngay']?></td>
+      <td><?php echo $datagv['Gio']?></td>
+      <td><?php echo $datagv['GhiChu']?></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <?php
+      $i++;
+    }
+  ?>
   </tbody>
+  
 </table>
     </div>
     <div class="col-12 col-md-4">
+      <h5>Lịch sinh viên</h5>
     <table class="table" style="margin-top:50px;">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nội dung</th>
+      <th scope="col">Địa điểm</th>
+      <th scope="col">Ngày</th>
+      <th scope="col">Giờ</th>
+      <th scope="col">Ghi chú</th>
     </tr>
   </thead>
   <tbody>
+  <?php 
+    $sqlgv = "SELECT * FROM lichlamviec WHERE Ngay = '".$thoigian."' AND DoiTuong = '22021'";
+    $kqgv = mysqli_query($conn, $sqlgv) or die("loi");
+    while($datagv = mysqli_fetch_array($kqgv))
+    {
+      $i=1;
+    
+    ?>
+    
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td><?php echo $datagv['NoiDung']?></td>
+      <td><?php echo $datagv['DiaDiem']?></td>
+      <td><?php echo $datagv['Ngay']?></td>
+      <td><?php echo $datagv['Gio']?></td>
+      <td><?php echo $datagv['GhiChu']?></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <?php
+      $i++;
+    }
+  ?>
   </tbody>
 </table>
     </div>
