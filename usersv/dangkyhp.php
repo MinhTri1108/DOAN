@@ -2,10 +2,11 @@
 $mahp = $_GET['mahp'];
 $masv = $_GET['masv'];
 $tenhp = $_GET['tenmh'];
+$giatien = $_GET['hocphi'];
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $timestamp = time();
 $thoigian = date ("Y-m-d H:i:s", $timestamp);
-$sql = "INSERT INTO `dangkymonhoc`VALUES ('','".$masv."','".$mahp."','".$thoigian."')";
+$sql = "INSERT INTO `dangkymonhoc`VALUES ('','".$masv."','".$mahp."','".$giatien."','".$thoigian."')";
 $kq= mysqli_query($conn, $sql);
 if($kq)
 {

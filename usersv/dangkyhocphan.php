@@ -1,10 +1,11 @@
 <?php include_once 'header.php';
-$sql = "SELECT dsmonhoc.* , lichhoc.*, thungay.*, dstiethoc.*, dsphonghoc.*, dsgiaovien.*,dslop.MaLop,dslop.TenLop FROM lichhoc
+$sql = "SELECT dsmonhoc.* , lichhoc.*, thungay.*, dstiethoc.*, dsphonghoc.*, dsgiaovien.*,dslop.MaLop,dslop.TenLop, hocphi.* FROM lichhoc
 INNER JOIN dsmonhoc ON lichhoc.MaMonHoc = dsmonhoc.MaMonHoc
 INNER JOIN thungay ON lichhoc.idthu = thungay.idthu
 INNER JOIN  dstiethoc ON lichhoc.idtiethoc = dstiethoc.idtiethoc
 INNER JOIN dsphonghoc ON lichhoc.idphong = dsphonghoc.idphong
 INNER JOIN dsgiaovien ON dsmonhoc.MaMonHoc = dsgiaovien.MaMonHoc
+INNER JOIN hocphi ON dsmonhoc.SoTinChi = hocphi.SoTinChi
 INNER JOIN dslop ON dsmonhoc.MaLop = dslop.MaLop WHERE dslop.MaLop = '".$_SESSION['profile']['MaLop']."' ORDER BY HocKi ASC";
 $kq = mysqli_query($conn,$sql);
 ?> 
@@ -81,7 +82,7 @@ $kq = mysqli_query($conn,$sql);
                         }
                         else
                         {
-                            ?><a href="dangkyhp.php?mahp=<?php echo $data['MaMonHoc']?>&tenmh=<?php echo $data['TenMonHoc']?>&masv=<?php echo $_SESSION['profile']['MaSV']?>"><i class="fas fa-user-edit">_Đăng kí</i><?php
+                            ?><a href="dangkyhp.php?mahp=<?php echo $data['MaMonHoc']?>&tenmh=<?php echo $data['TenMonHoc']?>&hocphi=<?php echo $data['GiaTien']?>&masv=<?php echo $_SESSION['profile']['MaSV']?>"><i class="fas fa-user-edit">_Đăng kí</i><?php
                         }
                         ?></th>
                     </tr>

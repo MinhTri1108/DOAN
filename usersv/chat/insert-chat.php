@@ -1,5 +1,7 @@
 
-<?php 
+<?php
+session_start();
+    include_once "connect.php";
     if(isset($_SESSION['profile']['MaSV'])){
         $outgoing_id =  $_SESSION['profile']['MaSV'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);

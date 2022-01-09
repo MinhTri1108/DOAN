@@ -4,10 +4,9 @@ $kq1 = mysqli_query($conn, $sql1);
 function tongtien()
 {
   include ('../config/connect.php');
-  $tongtc = "SELECT dsmonhoc.*, hocphi.*, dangkymonhoc.*, SUM(GiaTien) AS tongtt
+  $tongtc = "SELECT dangkymonhoc.*, SUM(HocPhi) AS tongtt
             FROM dangkymonhoc 
-            INNER JOIN dsmonhoc ON dsmonhoc.MaMonHoc = dangkymonhoc.MaMonHoc
-            INNER JOIN hocphi ON dsmonhoc.SoTinChi = hocphi.SoTinChi WHERE dangkymonhoc.MaSV = '".$_SESSION['profile']['MaSV']."'";
+             WHERE dangkymonhoc.MaSV = '".$_SESSION['profile']['MaSV']."'";
             $kq2 = mysqli_query($conn, $tongtc);
                 if($data2 = mysqli_fetch_array($kq2))
                 {
@@ -29,6 +28,7 @@ function tongtien()
         <th>Tên Môn Học</th>
         <th>Số tín chỉ</th>
         <th>Giá tiền</th>
+        <th>Số tiên phải đóng</th>
       </tr>
     </thead>  
 <?php
@@ -65,6 +65,7 @@ if($data1 = mysqli_fetch_array($kq1))
         <td><?php echo $data['TenMonHoc'];?></td>
         <td><?php echo $data['SoTinChi'];?></td>
         <td><?php echo $data['GiaTien'];?></td>
+        <td><?php echo $data['HocPhi'];?></td>
       </tr>
     
     </tbody>
