@@ -100,10 +100,10 @@ function tongnu()
     </div>
     <div style = " width:auto; height:auto;">
     <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <tr>
+        <tr style="background-color: #3b89d6;">
             <th>Mã sinh viên: </th>
             <th>Password</th>
-        <th>Họ và tên</th>
+            <th>Họ và tên</th>
             <th>Ngày sinh</th>
             <th>CCCD/CMND</th>
             <th>Giới Tính</th>

@@ -20,7 +20,7 @@ table {
     <h2>Danh sách tài liệu</h2> 
     <table class="table table-bordered">  
     <thead>
-      <tr>
+      <tr style="background-color: #3b89d6;">
         <th>Người gửi</th>
         <th>Tên Môn Học</th>
         <th>Mô tả</th>
@@ -38,7 +38,7 @@ table {
         <th><?php echo $data['HoTen']?></th>
         <th><?php echo $data['TenMonHoc']?></th>
         <th><?php echo $data['MoTa']?></th>
-        <th><a download="<?php echo $data['File'];?>" href="downloads/<?php echo $data['File'];?>"><i class="fas fa-file-download"></i> Download</a></th>
+        <th><a download="<?php echo $data['File'];?>" href="../downloads/<?php echo $data['File'];?>"><i class="fas fa-file-download"></i> Download</a></th>
     </tr>
     
     </tbody>

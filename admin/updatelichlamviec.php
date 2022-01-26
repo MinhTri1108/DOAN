@@ -37,8 +37,8 @@ if(isset($_POST['save']))
     <div class="row justify-content-center">
         <div class="col-md-6">
         <div class="card">
-        <header class="card-header">
-        <h4 class="card-title mt-2">Thêm Lịch làm việc</h4>
+        <header class="card-header" style="background-color: #3b89d6;">
+        <h4 class="card-title mt-2" >Thêm Lịch làm việc</h4>
         </header>
         <article class="card-body">
         <form method="POST" action="">

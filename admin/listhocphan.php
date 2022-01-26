@@ -35,16 +35,14 @@ function tong()
         <p>Tổng số học phần: <?php tong();?></p>    
     </div>
     <div style = " width:auto; height:auto;">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <tr>
-        <div>
+    <table id="example" class="table table-striped table-bordered" style="width:100%" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+        <tr style="background-color: #3b89d6;">
             <th>Học Kì</th>
             <th>Môn học </th>
             <th>Lịch học</th>
             <th>Phòng học</th>
             <th>Sửa</th>
             <th>Xóa</th>
-        </div>
         </tr>
         <?php
 			while ($data = mysqli_fetch_array($kq))

@@ -15,8 +15,8 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 </div>
                 <div class="row ml-3 mt-3 mr-2">
                     <div class="col-12 col-md-12 ">
-                <table style = "margin-top: 10px;" id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
-                    <thead>
+                <table style = "margin-top: 10px;" id="example" class="table table-striped table-bordered" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+                    <thead style="background-color: #3b89d6;">
                         <th>ID/ Người gửi</th>
                         <th>ID/ Người nhận</th>
                         <th>Nội Dung</th>

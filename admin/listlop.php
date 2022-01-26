@@ -37,7 +37,7 @@ function tong()
     </div>
 <div style = " width:auto; height:auto;">
     <table id="example" class="table table-striped table-bordered" style="width:100%;">
-        <tr>
+        <tr style="background-color: #3b89d6;">
             <th>Hệ Đào Tạo</th>
             <th>Tên Khoa</th>
             <th>Tên Khóa Học</th>

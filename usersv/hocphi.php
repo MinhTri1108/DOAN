@@ -23,7 +23,7 @@ function tongtien()
     <h2>Học phí</h2> 
     <table class="table table-bordered">  
     <thead>
-      <tr>
+      <tr style="background-color: #3b89d6;">
         <th>Mã Môn Học</th>
         <th>Tên Môn Học</th>
         <th>Số tín chỉ</th>

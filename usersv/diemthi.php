@@ -18,7 +18,7 @@ table {
     <h2>Kết quả học tập</h2> 
     <table class="table table-bordered">  
     <thead>
-      <tr>
+      <tr style="background-color: #3b89d6;">
         <th>STT</th>
         <th >Mã Môn Học</th>
         <th>Tên Môn Học</th>

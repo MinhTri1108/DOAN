@@ -29,7 +29,7 @@ $kq = mysqli_query($conn,$sql);
 		<div class="col">
 			<table id="example" class="display" width="100%" data-page-length="25" data-order="[[ 0, &quot;asc&quot; ]]">
 		        <thead>
-		            <tr>
+		            <tr style="background-color: #3b89d6;">
                         <th>Học kì</th>
                         <th>Môn học</th>
                         <th>Thời gian</th>
@@ -71,7 +71,7 @@ $kq = mysqli_query($conn,$sql);
                             Kết thúc: <?php echo $data['GioHocKT']?>
                             <br>
                             Phòng: <?php echo $data['SoPhong']?>
-                        </th>
+                        </th>   
                         <th><?php echo $data['HoTen']?></th>
                         <th><?php
                         $sqlktra = "SELECT * FROM `dangkymonhoc` WHERE `MaSV`= '".$_SESSION['profile']['MaSV']."' AND `MaMonHoc` = '".$data['MaMonHoc']."'";

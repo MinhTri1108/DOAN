@@ -33,7 +33,7 @@ $thoigian = date("Y-m-d");
     <table class="table" style="margin-top:50px;">
   <thead>
     
-    <tr>
+    <tr style="background-color: #3b89d6;">
       <th scope="col">Nội dung</th>
       <th scope="col">Địa điểm</th>
       <th scope="col">Ngày</th>

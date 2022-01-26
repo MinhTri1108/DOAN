@@ -109,7 +109,7 @@ $kq = mysqli_query($conn, $sql);
 		<div class="col">
 			<table id="example" class="display" width="100%" data-page-length="25" data-order="[[ 0, &quot;asc&quot; ]]">
 		        <thead>
-		            <tr>
+		            <tr style="background-color: #3b89d6;">
                         <th>Mã Sinh Viên</th>
                         <th>Họ Tên</th>
                         <th>Ngày sinh</th>

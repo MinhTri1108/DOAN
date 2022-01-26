@@ -73,8 +73,8 @@ if(isset($_POST['send']))
                 <a href="thongbaogiangvien.php" style = "margin-left:45px;" class="btn btn-primary">Danh sách các thông báo đã gửi tới giảng viên <i class="fas fa-chevron-circle-right"></i></a>
                 </div>
                 <div style = "margin-top: 20px !important;">
-                <table  id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
-                    <thead>
+                <table  id="example" class="table table-striped table-bordered" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+                    <thead style="background-color: #3b89d6;">
                         <th>ID/ Người gửi</th>
                         <th>ID/ Người nhận</th>
                         <th>Nội Dung</th>

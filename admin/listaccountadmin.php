@@ -71,9 +71,9 @@ function tongnu()
     
 	<div class="row">
 		<div class="col">
-			<table id="example" class="display" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
+			<table id="example" class="table table-striped table-bordered" width="100%" data-page-length="25" data-order="[[ 1, &quot;asc&quot; ]]">
 		        <thead>
-		            <tr>
+		            <tr style="background-color: #3b89d6;">
                         <th>Mã ADMIN</th>
                         <th>Password</th>
                         <th>Họ và tên</th>

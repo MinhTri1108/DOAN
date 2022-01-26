@@ -34,7 +34,7 @@ $kq = mysqli_query($conn, $sql);
     </div>
 
     <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <tr>
+        <tr style="background-color: #3b89d6;">
             <th>Tên Khoa</th>
             <th>Tên Lớp</th>
             <th>Khóa học</th>

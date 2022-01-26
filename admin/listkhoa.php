@@ -35,7 +35,7 @@ function tong()
         <p>Tổng số Khoa: <?php tong()?></p>
     </div>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <tr>
+        <tr style="background-color: #3b89d6;">
             <th>Tên Khoa</th>
             <th>Sửa</th>
             <th>Xóa</th>
